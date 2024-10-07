@@ -1,13 +1,15 @@
 
 using UnityEngine;
-using UnityEngine.InputSystem; 
+using UnityEngine.InputSystem;
+[RequireComponent(typeof(Rigidbody))]
 public class Player : MonoBehaviour
 {
 
     private Gamepad Controller;
     public PlayerStats Stats;
     public float currentSpeed { get; private set; }
-    public bool AllowMovement { get; set; } = false; 
+    public bool AllowMovement { get; set; } = false;
+    private Rigidbody rb; 
 
     GameObject playerModel; 
     // Start is called before the first frame update
@@ -17,7 +19,11 @@ public class Player : MonoBehaviour
         // Add The Mesh here 
         //playerModel = Instantiate(Stats.Object);
         //playerModel.transform.parent = gameObject.transform;
-        AllowMovement = true; 
+        AllowMovement = true;
+        if (rb == null)
+        {
+            rb = gameObject.GetComponent<Rigidbody>();
+        }
         
 
     }
@@ -31,8 +37,13 @@ public class Player : MonoBehaviour
         }
 
         float turn = Controller == null ? GetKeyboardInput() : GetControllerInput();
+        
 
-        transform.position = new(transform.position.x, transform.position.y, transform.position.z + currentSpeed * Time.deltaTime);
+        Vector3 vel = transform.forward * currentSpeed; 
+        vel.y = rb.velocity.y;
+        rb.velocity = vel;
+        //transform.position = new(transform.position.x, transform.position.y, transform.position.z + currentSpeed * Time.deltaTime);
+        
         transform.transform.eulerAngles = new Vector3(
         transform.eulerAngles.x,
         turn,
@@ -42,7 +53,7 @@ public class Player : MonoBehaviour
         // Apply movement
         if (currentSpeed < Stats.maxSpeed)
         {
-            currentSpeed += Stats.acceleration * Time.deltaTime;
+            currentSpeed = Mathf.Lerp(currentSpeed, Stats.maxSpeed, Stats.acceleration * Time.deltaTime);
         }
 
 
