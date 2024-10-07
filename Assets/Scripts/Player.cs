@@ -16,7 +16,8 @@ public class Player : MonoBehaviour
 
         // Add The Mesh here 
         //playerModel = Instantiate(Stats.Object);
-        //playerModel.transform.parent = gameObject.transform; 
+        //playerModel.transform.parent = gameObject.transform;
+        AllowMovement = true; 
         
 
     }
@@ -29,8 +30,14 @@ public class Player : MonoBehaviour
             return; 
         }
 
-        float turn = transform.position.y;
+        float turn = Controller == null ? GetKeyboardInput() : GetControllerInput();
 
+        transform.position = new(transform.position.x, transform.position.y, transform.position.z + currentSpeed * Time.deltaTime);
+        transform.transform.eulerAngles = new Vector3(
+        transform.eulerAngles.x,
+        turn,
+        transform.eulerAngles.z
+    );
 
         // Apply movement
         if (currentSpeed < Stats.maxSpeed)
@@ -38,31 +45,6 @@ public class Player : MonoBehaviour
             currentSpeed += Stats.acceleration * Time.deltaTime;
         }
 
-
-
-        if (Controller.leftShoulder.value > 0.5)
-        {
-            // Drift 
-        }
-
-        if ( Controller.rightStick.value.x > 0.1f)
-        {
-            // move left
-            turn += (Stats.turnRaduis * Time.deltaTime * Controller.rightStick.value.x);
-
-        }
-
-        if( Controller.rightStick.value.x < -0.1f)
-        {
-            turn -= (Stats.turnRaduis * Time.deltaTime * Controller.rightStick.value.x);
-        }
-
-        transform.position = new(transform.position.x + currentSpeed * Time.deltaTime, turn);
-        if (Controller == null)
-        {
-            Debug.Log("No controller attatched to object");
-            return;
-        }
 
     }
 
@@ -73,5 +55,57 @@ public class Player : MonoBehaviour
     }
 
 
+    float GetKeyboardInput()
+    {
+
+        float turn = transform.eulerAngles.y;
+        if (Input.GetKey(KeyCode.D))
+        {
+            turn += (Stats.turnRate * Time.deltaTime);
+            Debug.Log(turn);
+            if (turn > Stats.turnRaduis && turn < 360 - Stats.turnRaduis - 3)
+            {
+                turn = Stats.turnRaduis; 
+            }
+        }
+
+        if (Input.GetKey(KeyCode.A))
+        {
+            turn -= (Stats.turnRate * Time.deltaTime);
+            Debug.Log(turn); 
+            if(turn < 360 - Stats.turnRaduis && turn > 360 - Stats.turnRaduis -3)
+            {
+                turn = Stats.turnRaduis * -1; 
+            }
+
+        }
+
+        return turn; 
+    }
+
+
+    float GetControllerInput()
+    {
+        float turn = transform.localPosition.y;
+
+        if (Controller.leftShoulder.value > 0.5)
+        {
+            // Drift 
+        }
+
+        if (Controller.rightStick.value.x > 0.1f)
+        {
+            // move left
+            turn += (Stats.turnRate * Time.deltaTime * Controller.rightStick.value.x);
+
+        }
+
+        if (Controller.rightStick.value.x < -0.1f)
+        {
+            turn -= (Stats.turnRate * Time.deltaTime * Controller.rightStick.value.x);
+        }
+
+        return turn; 
+    }
 
 }
