@@ -16,4 +16,6 @@ MonoBehaviour:
   maxSpeed: 10
   driftModifer: 3
   acceleration: 2
-  turnRaduis: 3
+  turnRaduis: 30
+  turnRate: 10
+  Object: {fileID: 0}

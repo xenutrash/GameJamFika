@@ -9,6 +9,7 @@ public class PlayerStats : ScriptableObject
     public float driftModifer;
     public float acceleration;
     public float turnRaduis;
+    public float turnRate = 40; 
     public GameObject Object;
     
 }
