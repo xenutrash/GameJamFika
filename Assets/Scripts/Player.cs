@@ -7,7 +7,7 @@ public class Player : MonoBehaviour
     private Gamepad Controller;
     public PlayerStats Stats;
     public float currentSpeed { get; private set; }
-    public bool AllowMovment { get; set; } = false; 
+    public bool AllowMovement { get; set; } = false; 
 
     GameObject playerModel; 
     // Start is called before the first frame update
@@ -15,26 +15,30 @@ public class Player : MonoBehaviour
     {
 
         // Add The Mesh here 
-        playerModel = Instantiate(Stats.Object);
-        playerModel.transform.parent = gameObject.transform; 
-
+        //playerModel = Instantiate(Stats.Object);
+        //playerModel.transform.parent = gameObject.transform; 
+        
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (!AllowMovment)
+        if (!AllowMovement)
         {
             return; 
         }
 
-        float turn = transform.position.y; 
-        if(Controller == null)
+        float turn = transform.position.y;
+
+
+        // Apply movement
+        if (currentSpeed < Stats.maxSpeed)
         {
-            Debug.Log("No controller attatched to object"); 
-            return; 
+            currentSpeed += Stats.acceleration * Time.deltaTime;
         }
+
+
 
         if (Controller.leftShoulder.value > 0.5)
         {
@@ -53,13 +57,12 @@ public class Player : MonoBehaviour
             turn -= (Stats.turnRaduis * Time.deltaTime * Controller.rightStick.value.x);
         }
 
-        // Apply movement
-        if (currentSpeed < Stats.maxSpeed)
-        {
-            currentSpeed += Stats.acceleration * Time.deltaTime;
-        }
-
         transform.position = new(transform.position.x + currentSpeed * Time.deltaTime, turn);
+        if (Controller == null)
+        {
+            Debug.Log("No controller attatched to object");
+            return;
+        }
 
     }
 
