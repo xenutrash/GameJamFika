@@ -75,7 +75,7 @@ public class SpringArm : MonoBehaviour
         hits = new RaycastHit[collisionTestResolution];
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         // if target is null, return from here: NullReference check
         if(!target)
