@@ -220,7 +220,7 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
-  rotationSpeed: 5
+  rotationSpeed: 10
   frontOffset: {x: 0, y: 0, z: 1.39}
   backOffset: {x: 0, y: 0, z: -2.16}
   leftOffset: {x: -1.45, y: 0, z: 0}
@@ -870,6 +870,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: -10.3
       objectReference: {fileID: 0}
+    - target: {fileID: 3487098604929909793, guid: 05ac41738c6244ff78f6b5fe8d830d25, type: 3}
+      propertyPath: extraDrift
+      value: 60
+      objectReference: {fileID: 0}
     - target: {fileID: 4715040890305707996, guid: 05ac41738c6244ff78f6b5fe8d830d25, type: 3}
       propertyPath: m_UseGravity
       value: 1
@@ -921,7 +925,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1907502537
 MonoBehaviour:
   m_ObjectHideFlags: 0

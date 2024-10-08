@@ -13,6 +13,10 @@ public class Player : MonoBehaviour
     private Rigidbody rb;
     public CamerController camerController;
 
+    public float turnRate;
+    private bool isDrifting;
+    [SerializeField] private float extraDrift;
+
     float speedBoost = 0; 
 
     GameObject playerModel; 
@@ -36,9 +40,20 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        print(turnRate);
         if (!AllowMovement)
         {
             return; 
+        }
+
+        if (isDrifting)
+        {
+            turnRate = Stats.turnRate + extraDrift;
+           
+        }
+        else
+        {
+            turnRate = Stats.turnRate;
         }
 
         float turn = Controller == null ? GetKeyboardInput() : GetControllerInput();
@@ -46,13 +61,26 @@ public class Player : MonoBehaviour
         // Apply movement
         if (currentSpeed >= Stats.maxSpeed + speedBoost)
         {
-            Debug.Log(currentSpeed); 
-            currentSpeed = Mathf.Lerp(currentSpeed, Stats.maxSpeed + speedBoost, Stats.acceleration + speedBoost * Time.deltaTime);
+            if (isDrifting)
+            {
+                currentSpeed = Mathf.Lerp(currentSpeed, Stats.maxSpeed + speedBoost - 3, Stats.acceleration + speedBoost * Time.deltaTime);
+            }
+            else
+            {
+               currentSpeed = Mathf.Lerp(currentSpeed, Stats.maxSpeed + speedBoost, Stats.acceleration + speedBoost * Time.deltaTime);
+            }
         }
 
         if (currentSpeed < Stats.maxSpeed + speedBoost)
         {
-            currentSpeed = Mathf.Lerp(currentSpeed, Stats.maxSpeed + speedBoost, Stats.acceleration + speedBoost * Time.deltaTime);
+            if (isDrifting)
+            {
+                currentSpeed = Mathf.Lerp(currentSpeed, Stats.maxSpeed + speedBoost - 3, Stats.acceleration + speedBoost * Time.deltaTime);
+            }
+            else
+            {
+                currentSpeed = Mathf.Lerp(currentSpeed, Stats.maxSpeed + speedBoost, Stats.acceleration + speedBoost * Time.deltaTime);
+            }
         }
 
         Vector3 vel = transform.forward * currentSpeed; 
@@ -84,17 +112,21 @@ public class Player : MonoBehaviour
         float turn = transform.eulerAngles.y;
         if (Input.GetKey(KeyCode.D))
         {
-            turn += (Stats.turnRate * Time.deltaTime);
-   
- 
+            turn += (turnRate * Time.deltaTime);
         }
 
         if (Input.GetKey(KeyCode.A))
         {
-            turn -= (Stats.turnRate * Time.deltaTime);
-    
-   
+            turn -= (turnRate * Time.deltaTime);
+        }
 
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            isDrifting = true;
+        }
+
+        if(Input.GetKeyUp(KeyCode.K)){
+            isDrifting = false;
         }
 
         return turn; 
