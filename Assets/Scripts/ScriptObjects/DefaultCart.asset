@@ -18,5 +18,5 @@ MonoBehaviour:
   acceleration: 2
   turnRaduis: 360
   turnRate: 100
-  boostMultiplier: 0
+  boostMultiplier: 1
   Object: {fileID: 0}

@@ -7,10 +7,13 @@ public class Player : MonoBehaviour
 
     private Gamepad Controller;
     public PlayerStats Stats;
+    
     public float currentSpeed { get; private set; }
     public bool AllowMovement { get; set; } = false;
     private Rigidbody rb;
-    public CamerController camerController; 
+    public CamerController camerController;
+
+    float speedBoost = 0; 
 
     GameObject playerModel; 
     // Start is called before the first frame update
@@ -39,7 +42,18 @@ public class Player : MonoBehaviour
         }
 
         float turn = Controller == null ? GetKeyboardInput() : GetControllerInput();
-        
+
+        // Apply movement
+        if (currentSpeed >= Stats.maxSpeed + speedBoost)
+        {
+            Debug.Log(currentSpeed); 
+            currentSpeed = Mathf.Lerp(currentSpeed, Stats.maxSpeed + speedBoost, Stats.acceleration + speedBoost * Time.deltaTime);
+        }
+
+        if (currentSpeed < Stats.maxSpeed + speedBoost)
+        {
+            currentSpeed = Mathf.Lerp(currentSpeed, Stats.maxSpeed + speedBoost, Stats.acceleration + speedBoost * Time.deltaTime);
+        }
 
         Vector3 vel = transform.forward * currentSpeed; 
         vel.y = rb.velocity.y;
@@ -52,11 +66,7 @@ public class Player : MonoBehaviour
         transform.eulerAngles.z
     );
 
-        // Apply movement
-        if (currentSpeed < Stats.maxSpeed)
-        {
-            currentSpeed = Mathf.Lerp(currentSpeed, Stats.maxSpeed, Stats.acceleration * Time.deltaTime);
-        }
+
 
 
     }
@@ -113,6 +123,19 @@ public class Player : MonoBehaviour
         }
 
         return turn; 
+    }
+
+    public void SetSpeedBoost(float speedBoost, bool apply = true)
+    {
+      
+        if (!apply)
+        {
+            this.speedBoost = 0;
+            return; 
+        }
+        Debug.Log("SpeedBoost yay");
+        this.speedBoost = speedBoost * Stats.boostMultiplier; 
+
     }
 
 }
