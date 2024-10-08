@@ -13,4 +13,5 @@ public class PlayerStats : ScriptableObject
     public float boostMultiplier;
     public GameObject Object;
     
+    
 }
