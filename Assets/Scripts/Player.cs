@@ -9,7 +9,8 @@ public class Player : MonoBehaviour
     public PlayerStats Stats;
     public float currentSpeed { get; private set; }
     public bool AllowMovement { get; set; } = false;
-    private Rigidbody rb; 
+    private Rigidbody rb;
+    public CamerController camerController; 
 
     GameObject playerModel; 
     // Start is called before the first frame update
@@ -24,7 +25,8 @@ public class Player : MonoBehaviour
         {
             rb = gameObject.GetComponent<Rigidbody>();
         }
-        
+        //camerController.SetTarget(transform);
+
 
     }
 
@@ -73,21 +75,15 @@ public class Player : MonoBehaviour
         if (Input.GetKey(KeyCode.D))
         {
             turn += (Stats.turnRate * Time.deltaTime);
-            Debug.Log(turn);
-            if (turn > Stats.turnRaduis && turn < 360 - Stats.turnRaduis - 3)
-            {
-                turn = Stats.turnRaduis; 
-            }
+   
+ 
         }
 
         if (Input.GetKey(KeyCode.A))
         {
             turn -= (Stats.turnRate * Time.deltaTime);
-            Debug.Log(turn); 
-            if(turn < 360 - Stats.turnRaduis && turn > 360 - Stats.turnRaduis -3)
-            {
-                turn = Stats.turnRaduis * -1; 
-            }
+    
+   
 
         }
 
