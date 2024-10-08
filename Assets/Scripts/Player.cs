@@ -1,13 +1,23 @@
 
 using UnityEngine;
-using UnityEngine.InputSystem; 
+using UnityEngine.InputSystem;
+[RequireComponent(typeof(Rigidbody))]
 public class Player : MonoBehaviour
 {
 
     private Gamepad Controller;
     public PlayerStats Stats;
+    
     public float currentSpeed { get; private set; }
-    public bool AllowMovement { get; set; } = false; 
+    public bool AllowMovement { get; set; } = false;
+    private Rigidbody rb;
+    public CamerController camerController;
+
+    public float turnRate;
+    private bool isDrifting;
+    [SerializeField] private float extraDrift;
+
+    float speedBoost = 0; 
 
     GameObject playerModel; 
     // Start is called before the first frame update
@@ -16,8 +26,14 @@ public class Player : MonoBehaviour
 
         // Add The Mesh here 
         //playerModel = Instantiate(Stats.Object);
-        //playerModel.transform.parent = gameObject.transform; 
-        
+        //playerModel.transform.parent = gameObject.transform;
+        AllowMovement = true;
+        if (rb == null)
+        {
+            rb = gameObject.GetComponent<Rigidbody>();
+        }
+        //camerController.SetTarget(transform);
+
 
     }
 
@@ -29,40 +45,56 @@ public class Player : MonoBehaviour
             return; 
         }
 
-        float turn = transform.position.y;
+        if (isDrifting)
+        {
+            turnRate = Stats.turnRate + extraDrift;
+           
+        }
+        else
+        {
+            turnRate = Stats.turnRate;
+        }
 
+        float turn = Controller == null ? GetKeyboardInput() : GetControllerInput();
 
         // Apply movement
-        if (currentSpeed < Stats.maxSpeed)
+        if (currentSpeed >= Stats.maxSpeed + speedBoost)
         {
-            currentSpeed += Stats.acceleration * Time.deltaTime;
+            if (isDrifting)
+            {
+                currentSpeed = Mathf.Lerp(currentSpeed, Stats.maxSpeed + speedBoost - 3, Stats.acceleration + speedBoost * Time.deltaTime);
+            }
+            else
+            {
+               currentSpeed = Mathf.Lerp(currentSpeed, Stats.maxSpeed + speedBoost, Stats.acceleration + speedBoost * Time.deltaTime);
+            }
         }
 
-
-
-        if (Controller.leftShoulder.value > 0.5)
+        if (currentSpeed < Stats.maxSpeed + speedBoost)
         {
-            // Drift 
+            if (isDrifting)
+            {
+                currentSpeed = Mathf.Lerp(currentSpeed, Stats.maxSpeed + speedBoost - 3, Stats.acceleration + speedBoost * Time.deltaTime);
+            }
+            else
+            {
+                currentSpeed = Mathf.Lerp(currentSpeed, Stats.maxSpeed + speedBoost, Stats.acceleration + speedBoost * Time.deltaTime);
+            }
         }
 
-        if ( Controller.rightStick.value.x > 0.1f)
-        {
-            // move left
-            turn += (Stats.turnRaduis * Time.deltaTime * Controller.rightStick.value.x);
+        Vector3 vel = transform.forward * currentSpeed; 
+        vel.y = rb.velocity.y;
+        rb.velocity = vel;
+        //transform.position = new(transform.position.x, transform.position.y, transform.position.z + currentSpeed * Time.deltaTime);
+        
+        transform.transform.eulerAngles = new Vector3(
+        transform.eulerAngles.x,
+        turn,
+        transform.eulerAngles.z
+    );
 
-        }
 
-        if( Controller.rightStick.value.x < -0.1f)
-        {
-            turn -= (Stats.turnRaduis * Time.deltaTime * Controller.rightStick.value.x);
-        }
 
-        transform.position = new(transform.position.x + currentSpeed * Time.deltaTime, turn);
-        if (Controller == null)
-        {
-            Debug.Log("No controller attatched to object");
-            return;
-        }
 
     }
 
@@ -73,5 +105,68 @@ public class Player : MonoBehaviour
     }
 
 
+    float GetKeyboardInput()
+    {
+
+        float turn = transform.eulerAngles.y;
+        if (Input.GetKey(KeyCode.D))
+        {
+            turn += (turnRate * Time.deltaTime);
+        }
+
+        if (Input.GetKey(KeyCode.A))
+        {
+            turn -= (turnRate * Time.deltaTime);
+        }
+
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            isDrifting = true;
+        }
+
+        if(Input.GetKeyUp(KeyCode.K)){
+            isDrifting = false;
+        }
+
+        return turn; 
+    }
+
+
+    float GetControllerInput()
+    {
+        float turn = transform.localPosition.y;
+
+        if (Controller.leftShoulder.value > 0.5)
+        {
+            // Drift 
+        }
+
+        if (Controller.rightStick.value.x > 0.1f)
+        {
+            // move left
+            turn += (Stats.turnRate * Time.deltaTime * Controller.rightStick.value.x);
+
+        }
+
+        if (Controller.rightStick.value.x < -0.1f)
+        {
+            turn -= (Stats.turnRate * Time.deltaTime * Controller.rightStick.value.x);
+        }
+
+        return turn; 
+    }
+
+    public void SetSpeedBoost(float speedBoost, bool apply = true)
+    {
+      
+        if (!apply)
+        {
+            this.speedBoost = 0;
+            return; 
+        }
+        Debug.Log("SpeedBoost yay");
+        this.speedBoost = speedBoost * Stats.boostMultiplier; 
+
+    }
 
 }
