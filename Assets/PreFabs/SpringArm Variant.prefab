@@ -52,7 +52,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: SpringArm Variant
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 192520820245445849, guid: aac0232e853a14815a75944921d510de, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

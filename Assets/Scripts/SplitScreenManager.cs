@@ -20,34 +20,21 @@ public class SplitScreenManager : MonoBehaviour
 
     private void Start()
     {
-        
+        foreach (Gamepad pad in Gamepad.all)
+        {
+            SpawnPlayer();
+            UpdateCameraView(); 
+            index++;
+        }
+  
     }
 
 
     private void FixedUpdate()
     {
-        if(players.Count > Gamepad.all.Count)
-        {
-            Vector3 pos = spawnPoints[index].transform.position;
-            Quaternion rotastion = spawnPoints[index].transform.rotation;
-            Gamepad pad = Gamepad.all[index];
-
-            GameObject spawnedPlayer = Instantiate<GameObject>(playerToSpawn);
-            spawnedPlayer.transform.SetPositionAndRotation(pos, rotastion);
-            Player player = spawnedPlayer.GetComponent<Player>();
-
-            GameObject spawnedCamera = Instantiate<GameObject>(playerToSpawn);
-            spawnedCamera.transform.SetPositionAndRotation(pos + SpringArmOffset, rotastion); 
-            Camera camera = spawnedCamera.GetComponentInChildren<Camera>();
-           
-            player.SetController(pad);
-            player.attatchedCamera = camera; 
-            AddPlayer(player);
-            UpdateCameraView(); 
-            index++; 
-        }
 
 
+     
 
     }
 
@@ -68,17 +55,42 @@ public class SplitScreenManager : MonoBehaviour
         }
         foreach(var camera in cameras)
         {
+            Debug.Log("Camera lol");
             float x = 0.5f; 
             if(pos < 1)
             {
-                x = 1; 
+                x = 0; 
             }
+
             camera.rect = new(
-               x , 1,
-                (1 / target), target > 2 ? 1 / 4 : 1); 
+               x , 0,
+                0.5f,1); 
                 
                 pos++;
         }
+
+    }
+
+    private void SpawnPlayer()
+    {
+        Debug.Log("Spawning thing");
+        Vector3 pos = spawnPoints[index].transform.position;
+        Quaternion rotastion = spawnPoints[index].transform.rotation;
+        Gamepad pad = Gamepad.all[index];
+
+        GameObject spawnedPlayer = Instantiate<GameObject>(playerToSpawn);
+        spawnedPlayer.transform.SetPositionAndRotation(pos, rotastion);
+        Player player = spawnedPlayer.GetComponent<Player>();
+
+        GameObject spawnedCamera = Instantiate<GameObject>(playerCameraRig);
+        spawnedCamera.transform.SetPositionAndRotation(pos + SpringArmOffset, rotastion);
+        SpringArm springArm = spawnedCamera.GetComponent<SpringArm>();
+        springArm.target = spawnedPlayer.transform;
+        Camera camera = spawnedCamera.GetComponentInChildren<Camera>();
+
+        player.SetController(pad);
+        player.attatchedCamera = camera;
+        AddPlayer(player);
 
     }
 }

@@ -103,14 +103,14 @@ public class Player : MonoBehaviour
     {
         float turn = transform.eulerAngles.y;
 
-        if(controller.rightStick.value.x > 0.1)
+        if(controller.leftStick.value.x > 0.1)
         {
-            turn += (Stats.turnRate * Time.deltaTime * controller.rightStick.value.x);
+            turn += (Stats.turnRate * Time.deltaTime * controller.leftStick.value.x);
         }
 
-        if (controller.rightStick.value.x < -0.1)
+        if (controller.leftStick.value.x < -0.1)
         {
-            turn -= (Stats.turnRate * Time.deltaTime * controller.rightStick.value.x *-1);
+            turn -= (Stats.turnRate * Time.deltaTime * controller.leftStick.value.x *-1);
         }
 
         return turn; 
