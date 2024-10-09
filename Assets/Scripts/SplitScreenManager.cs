@@ -1,11 +1,8 @@
-using System.Collections;
+
 using System.Collections.Generic;
-using Unity.VisualScripting;
-using Unity.VisualScripting.Antlr3.Runtime.Tree;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using static UnityEditor.Searcher.SearcherWindow.Alignment;
-using UnityEngine.Splines;
+
 
 public class SplitScreenManager : MonoBehaviour
 {
@@ -23,22 +20,21 @@ public class SplitScreenManager : MonoBehaviour
 
     private void Start()
     {
-        foreach (Gamepad pad in Gamepad.all)
+        int playersInGame = CrossSceneContainer.PlayersInGame;
+
+        if(playersInGame > Gamepad.all.Count)
+        {
+            playersInGame = Gamepad.all.Count;
+        }
+
+        for(int i = 0; i < playersInGame; i++)
         {
             SpawnPlayer();
-            UpdateCameraView(); 
+            UpdateCameraView();
             index++;
         }
+   
   
-    }
-
-
-    private void FixedUpdate()
-    {
-
-
-     
-
     }
 
     public void AddPlayer(Player player)
