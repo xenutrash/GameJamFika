@@ -62,11 +62,13 @@ public class PowerUp : MonoBehaviour
             Debug.Log("not a player"); 
             return; 
         }
+
         if(!collision.gameObject.TryGetComponent<Player>(out targetPlayer))
         {
             Debug.Log("No player attatched to the player");
             return; 
         }
+
         Debug.Log("Trying to apply the speedboost"); 
         activated = true;
         targetPlayer.SetSpeedBoost(speedModifier);
