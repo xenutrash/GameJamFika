@@ -57,7 +57,7 @@ public class PowerUp : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (!collision.gameObject.CompareTag("Player"))
+        if (!collision.gameObject.tag.Contains("Player"))
         {
             Debug.Log("not a player"); 
             return; 
