@@ -1,8 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 
+using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+
 
 public class SplitScreenManager : MonoBehaviour
 {
@@ -18,23 +19,19 @@ public class SplitScreenManager : MonoBehaviour
 
     int index = 0; 
 
-    private void Start()
+    private void Awake()
     {
-        foreach (Gamepad pad in Gamepad.all)
+        int playersInGame = CrossSceneContainer.PlayersInGame;
+
+        Debug.Log(CrossSceneContainer.PlayersInGame); 
+
+        for(int i = 0; i < playersInGame; i++)
         {
             SpawnPlayer();
-            UpdateCameraView(); 
+           
             index++;
         }
-  
-    }
-
-
-    private void FixedUpdate()
-    {
-
-
-     
+        UpdateCameraView();
 
     }
 
@@ -53,29 +50,44 @@ public class SplitScreenManager : MonoBehaviour
         {
             return; 
         }
-        foreach(var camera in cameras)
-        {
-            Debug.Log("Camera lol");
-            float x = 0.5f; 
-            if(pos < 1)
-            {
-                x = 0; 
-            }
 
-            camera.rect = new(
-               x , 0,
-                0.5f,1); 
-                
-                pos++;
+        if(cameras.Count == 2)
+        {
+            cameras[0].rect = new(0,0,0.5f,1);
+            cameras[1].rect = new(0.5f, 0, 0.5f, 1); 
+            return;
         }
 
+        foreach (var camera in cameras)
+        {
+            switch (pos)
+            {
+                case 0:
+                    camera.rect = new Rect(0, 0.5f, 0.5f, 0.5f);
+                    break; 
+                case 1:
+                    camera.rect = new Rect(0.5f, 0.5f, 0.5f, 0.5f);
+                    break;
+                case 2:
+                    camera.rect = new Rect(0, 0, 0.5f, 0.5f);
+                    break; 
+                case 3:
+                    camera.rect = new Rect(0.5f, 0, 0.5f, 0.5f);
+                    break; 
+                default:
+                    break;
+
+            }
+            pos++;
+                    
+                    
+        }
     }
 
     private void SpawnPlayer()
     {
         Debug.Log("Spawning thing");
-        Vector3 pos = spawnPoints[index].transform.position;
-        Quaternion rotastion = spawnPoints[index].transform.rotation;
+        spawnPoints[index].transform.GetPositionAndRotation(out Vector3 pos, out Quaternion rotastion);
         Gamepad pad = Gamepad.all[index];
 
         GameObject spawnedPlayer = Instantiate<GameObject>(playerToSpawn);
@@ -87,6 +99,11 @@ public class SplitScreenManager : MonoBehaviour
         SpringArm springArm = spawnedCamera.GetComponent<SpringArm>();
         springArm.target = spawnedPlayer.transform;
         Camera camera = spawnedCamera.GetComponentInChildren<Camera>();
+
+        if(index == 0) // makes sure only one audio listiner is in the scene 
+        {
+            spawnedCamera.transform.GetChild(0).AddComponent<AudioListener>();
+        }
 
         player.SetController(pad);
         player.attatchedCamera = camera;

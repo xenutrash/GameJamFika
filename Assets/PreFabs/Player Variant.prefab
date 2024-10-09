@@ -8,6 +8,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 386278296797919782, guid: 05ac41738c6244ff78f6b5fe8d830d25, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f21953db803337d49b10c7c1fad163a3, type: 2}
     - target: {fileID: 2461869904534792715, guid: 05ac41738c6244ff78f6b5fe8d830d25, type: 3}
       propertyPath: m_TagString
       value: Player
@@ -80,6 +84,10 @@ PrefabInstance:
       propertyPath: extraDrift
       value: 60
       objectReference: {fileID: 0}
+    - target: {fileID: 3811264781394385637, guid: 05ac41738c6244ff78f6b5fe8d830d25, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f21953db803337d49b10c7c1fad163a3, type: 2}
     - target: {fileID: 4715040890305707996, guid: 05ac41738c6244ff78f6b5fe8d830d25, type: 3}
       propertyPath: m_Drag
       value: 3
