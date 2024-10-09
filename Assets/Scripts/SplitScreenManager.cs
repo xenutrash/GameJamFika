@@ -27,7 +27,7 @@ public class SplitScreenManager : MonoBehaviour
             playersInGame = Gamepad.all.Count;
         }
 
-        for(int i = 0; i < playersInGame; i++)
+        for(int i = 1; i < playersInGame; i++)
         {
             SpawnPlayer();
             UpdateCameraView();
