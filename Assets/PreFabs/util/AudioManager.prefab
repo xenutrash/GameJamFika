@@ -1,0 +1,65 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8464082579724097539
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9073348149301023952}
+  - component: {fileID: 8361953764613142759}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9073348149301023952
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8464082579724097539}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 48.235138, y: 34.23391, z: 483.30307}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8361953764613142759
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8464082579724097539}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa3d76bdf2bfd204ca342e129dac0030, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: Bg_Music
+    clip: {fileID: 8300000, guid: 1b6d5daccf858a0458ef7eeb9255fd29, type: 3}
+    volume: 0.68
+    pitch: 0
+    loop: 1
+    source: {fileID: 0}
+  - name: GetMemOreFish
+    clip: {fileID: 8300000, guid: ae0ed8573f8a1f740b0db63731493599, type: 3}
+    volume: 1.73
+    pitch: 0
+    loop: 1
+    source: {fileID: 0}
+  - name: GiveMeYourFish
+    clip: {fileID: 8300000, guid: c16af0d5d97838443bd7291b403e15f3, type: 3}
+    volume: 1.73
+    pitch: 0
+    loop: 1
+    source: {fileID: 0}

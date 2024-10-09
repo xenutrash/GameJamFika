@@ -16,10 +16,11 @@ public class SplitScreenManager : MonoBehaviour
     [SerializeField]
     GameObject[] spawnPoints;
     public Vector3 SpringArmOffset; 
+    GameManager gameManager;
 
     int index = 0; 
 
-    private void Awake()
+    private void Start()
     {
         int playersInGame = CrossSceneContainer.PlayersInGame;
 
@@ -32,6 +33,8 @@ public class SplitScreenManager : MonoBehaviour
             index++;
         }
         UpdateCameraView();
+        gameManager = GameManager.GetInstance();
+        gameManager.StartGame(this);
 
     }
 
@@ -107,8 +110,20 @@ public class SplitScreenManager : MonoBehaviour
 
         player.SetController(pad);
         player.attatchedCamera = camera;
+        player.AllowMovement = false;
         AddPlayer(player);
 
+    }
+
+
+
+    public void EnablePlayerMovement()
+    {
+
+        foreach(Player player in players)
+        {
+            player.AllowMovement = true;
+        }
     }
 }
 

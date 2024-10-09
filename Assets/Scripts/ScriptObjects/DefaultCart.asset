@@ -20,3 +20,10 @@ MonoBehaviour:
   turnRate: 60
   boostMultiplier: 1
   Object: {fileID: 0}
+  rotastionOFObject: {x: 0, y: 0, z: 0, w: 0}
+  posistionOfObject: {x: 0, y: 0, z: 0}
+  BoostSound: GetMeMoreFish
+  FirstPlaceSound: 
+  LastPlaceSound: 
+  hitSound: 
+  tauntSound: GiveMeYourFish

@@ -16,10 +16,12 @@ public class Player : MonoBehaviour
     private float originalTurnRate;
     public Animator animator;
 
+    bool Taunting = false; 
+
     // Start is called before the first frame update
     void Start()
     {
-        AllowMovement = true;
+        //AllowMovement = true;
         if (rb == null)
         {
             rb = gameObject.GetComponent<Rigidbody>();
@@ -60,8 +62,21 @@ public class Player : MonoBehaviour
             turn,
             transform.eulerAngles.z
         );
+
+    
+
         if(controller != null)
         {
+            if (controller.yButton.isPressed && !Taunting)
+            {
+                PlayTaunt();
+                Taunting = true; 
+            }
+            else if(!controller.yButton.isPressed)
+            {
+                Taunting = false;
+            }
+
             if (controller.aButton.IsPressed())
             {
                 StartDrifting(); 
@@ -148,6 +163,13 @@ public class Player : MonoBehaviour
             this.speedBoost = 0;
             return;
         }
+        // prevents boosts from being multipiled 
+        if(this.speedBoost != 0)
+        {
+            return; 
+        }
+
+        PlayAudioOneShoot(Stats.BoostSound);
         animator.SetTrigger("boost");
         Debug.Log("SpeedBoost yay");
         this.speedBoost = speedBoost * Stats.boostMultiplier;
@@ -157,6 +179,25 @@ public class Player : MonoBehaviour
     public void SetController(Gamepad pad)
     {
         controller = pad; 
+    }
+
+    public void PlayAudioOneShoot(string audioToPlay)
+    {
+        if(AudioManager.instance == null)
+        {
+            Debug.Log("No audio manager in scene"); 
+            return; 
+        }
+        Debug.Log("Trying to play sound now"); 
+        AudioManager.instance.PlayOneShot(audioToPlay); 
+    }
+
+    private void PlayTaunt()
+    {
+        PlayAudioOneShoot(Stats.tauntSound);
+        animator.SetTrigger("boost");
+
+
     }
 
 }
