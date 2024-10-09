@@ -884,6 +884,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: -1.14
       objectReference: {fileID: 0}
+    - target: {fileID: 2466301598178761741, guid: f34a80dc5a4f34df18703fee8243d7a6, type: 3}
+      propertyPath: looping
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4940689088096040174, guid: f34a80dc5a4f34df18703fee8243d7a6, type: 3}
       propertyPath: m_Name
       value: PowerUp (16)
