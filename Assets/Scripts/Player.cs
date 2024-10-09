@@ -11,7 +11,7 @@ public class Player : MonoBehaviour
     public float currentSpeed { get; private set; }
     public bool AllowMovement { get; set; } = false;
     private Rigidbody rb;
-    public CamerController camerController;
+    public Camera attatchedCamera; 
 
     float speedBoost = 0; 
 
