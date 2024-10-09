@@ -1,16 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class Intro2DManager : MonoBehaviour {
     [SerializeField] private GameObject[] countdownObjects; // Array för varje GameObject (1, 2, 3, GO)
-    [SerializeField] private AudioSource audioS;
-    [SerializeField] private AudioClip[] numberSounds; // Ljudklipp för "1", "2", "3", "GO!"
+    //[SerializeField] private AudioSource audioS;
+    //[SerializeField] private AudioClip[] numberSounds; // Ljudklipp för "1", "2", "3", "GO!"
     [SerializeField] private string triggerName = "Play"; // Namnet på samma trigger för alla objekten
 
     [SerializeField] private float countdownInterval = 1f;  // Tidsintervall mellan varje steg i nedräkningen
-    [SerializeField] private float soundCountdown = 2f;
+   // [SerializeField] private float soundCountdown = 2f;
 
     void Start()
     {
@@ -31,13 +30,13 @@ public class Intro2DManager : MonoBehaviour {
                 animator.SetTrigger(triggerName);
             }
 
-            yield return new WaitForSeconds(soundCountdown);
+            // yield return new WaitForSeconds(soundCountdown);
 
-            // Spela upp motsvarande ljud för siffran eller "GO!"
-            if (i < numberSounds.Length)
-            {
-                audioS.PlayOneShot(numberSounds[i]);
-            }
+            // // Spela upp motsvarande ljud för siffran eller "GO!"
+            // if (i < numberSounds.Length)
+            // {
+            //     audioS.PlayOneShot(numberSounds[i]);
+            // }
 
             // Vänta innan nästa animation triggas
             yield return new WaitForSeconds(countdownInterval);
