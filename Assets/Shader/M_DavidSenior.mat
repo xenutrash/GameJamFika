@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Lattle
+  m_Name: M_DavidSenior
   m_Shader: {fileID: -6465566751694194690, guid: 2df54bba0c3fb4144bbb219a012725dd, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -24,7 +24,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _MainTexture:
-        m_Texture: {fileID: 2800000, guid: 57e52f57a62d4c541a08932734c39573, type: 3}
+        m_Texture: {fileID: 2800000, guid: 883a179a39e69c64e8c7f14df0979229, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _T_PaintStroke:
@@ -45,16 +45,16 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Brightness: 2
-    - _Offset: 0.7
+    - _Brightness: 1
+    - _Offset: 0.1
     - _Overlay_Strength: 1
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _Strength: 0.3
+    - _Strength: 0
     - _Stroke_Scale: 1
     m_Colors:
-    - _Color_A: {r: 0.5018867, g: 0.42153892, b: 0.3361694, a: 1}
-    - _Color_B: {r: 0.6226415, g: 0.42454562, b: 0.19149159, a: 1}
+    - _Color_A: {r: 0.735849, g: 0.56274825, b: 0.25407612, a: 1}
+    - _Color_B: {r: 0.6754716, g: 0.1586004, b: 0.110879265, a: 1}
   m_BuildTextureStacks: []
 --- !u!114 &4319779641588325445
 MonoBehaviour:

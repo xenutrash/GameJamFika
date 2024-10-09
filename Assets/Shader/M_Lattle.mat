@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Bullle
+  m_Name: M_Lattle
   m_Shader: {fileID: -6465566751694194690, guid: 2df54bba0c3fb4144bbb219a012725dd, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -24,7 +24,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _MainTexture:
-        m_Texture: {fileID: 2800000, guid: c91876d7a15357b419dbafb9d48ee44c, type: 3}
+        m_Texture: {fileID: 2800000, guid: 57e52f57a62d4c541a08932734c39573, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _T_PaintStroke:
@@ -53,8 +53,8 @@ Material:
     - _Strength: 0.5
     - _Stroke_Scale: 1
     m_Colors:
-    - _Color_A: {r: 0.735849, g: 0.735849, b: 0.735849, a: 1}
-    - _Color_B: {r: 0.7924528, g: 0.5905707, b: 0.35510856, a: 1}
+    - _Color_A: {r: 0.6603774, g: 0.6151415, b: 0.5699057, a: 1}
+    - _Color_B: {r: 0.774, g: 0.5818906, b: 0.369198, a: 1}
   m_BuildTextureStacks: []
 --- !u!114 &4319779641588325445
 MonoBehaviour:
