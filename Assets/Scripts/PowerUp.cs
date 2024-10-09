@@ -4,6 +4,8 @@ using UnityEngine;
 [RequireComponent(typeof(CapsuleCollider))]
 public class PowerUp : MonoBehaviour
 {
+    
+
     public float durastion;
     public float speedModifier;
     public float respawnTime;
@@ -12,7 +14,10 @@ public class PowerUp : MonoBehaviour
     bool activated = false;
     float acumulater;
     public CapsuleCollider col;
-    public MeshRenderer meshRenderer; 
+    public MeshRenderer meshRenderer;
+
+    ParticleSystem confetti;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -24,6 +29,7 @@ public class PowerUp : MonoBehaviour
         {
             meshRenderer = GetComponent<MeshRenderer>(); 
         }
+       confetti = GetComponentInChildren<ParticleSystem>();
 
     }
 
@@ -72,7 +78,17 @@ public class PowerUp : MonoBehaviour
         activated = true;
         targetPlayer.SetSpeedBoost(speedModifier);
         col.enabled = false;
-        meshRenderer.enabled = false; 
+        meshRenderer.enabled = false;
+
+        try
+        {
+            confetti.Play();
+        }
+        catch (System.Exception)
+        {
+
+            return;
+        } 
         
     }
     
