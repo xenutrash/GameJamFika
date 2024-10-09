@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Linus.unity
     guid: c56e5cc0ecce5ed40bc317275ced456c
+  - enabled: 1
+    path: Assets/Scenes/IntroScene.unity
+    guid: 1ed84e95e595c42a78fafb84e9db826f
   m_configObjects: {}
