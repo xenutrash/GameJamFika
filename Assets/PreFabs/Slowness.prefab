@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2347449480530942860}
   - component: {fileID: 8241741489440259425}
   m_Layer: 0
-  m_Name: PowerUp
+  m_Name: Slowness
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -105,7 +105,7 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.72464085
+  m_Radius: 0.6
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
@@ -121,8 +121,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29f1914115c3b435c9efaf0124f496a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  durastion: 1
-  speedModifier: 20
+  durastion: 2
+  speedModifier: -7
   respawnTime: 4
   col: {fileID: 0}
   meshRenderer: {fileID: 6195552111023735320}
@@ -189,7 +189,11 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 9fd2cbeb2631c4950b39445cdf90f574, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 75147ae0bc2458248bcfc63fcaa42d90, type: 2}
+      objectReference: {fileID: 2100000, guid: c13f169dd54332346ae65c5704912eda, type: 2}
+    - target: {fileID: -5754084199372789682, guid: 9fd2cbeb2631c4950b39445cdf90f574, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: -5495902117074765545, guid: 1be756c839c47ea46bc56734bda34d83, type: 3}
     - target: {fileID: 919132149155446097, guid: 9fd2cbeb2631c4950b39445cdf90f574, type: 3}
       propertyPath: m_Name
       value: Bulle
