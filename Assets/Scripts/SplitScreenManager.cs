@@ -1,8 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
-
+using Unity.VisualScripting;
+using Unity.VisualScripting.Antlr3.Runtime.Tree;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using static UnityEditor.Searcher.SearcherWindow.Alignment;
+using UnityEngine.Splines;
 
 public class SplitScreenManager : MonoBehaviour
 {
@@ -53,22 +56,67 @@ public class SplitScreenManager : MonoBehaviour
         {
             return; 
         }
-        foreach(var camera in cameras)
-        {
-            Debug.Log("Camera lol");
-            float x = 0.5f; 
-            if(pos < 1)
-            {
-                x = 0; 
-            }
 
-            camera.rect = new(
-               x , 0,
-                0.5f,1); 
-                
-                pos++;
+        if(cameras.Count == 2)
+        {
+            cameras[0].rect = new(0,0, 0.5f,1);
+            cameras[1].rect = new(0, 0.5f, 0.5f, 1); 
         }
 
+        foreach (var camera in cameras)
+        {
+            switch (pos)
+            {
+                case 0:
+                    camera.rect = new Rect(0, 0.5f, 0.5f, 0.5f);
+                    break; 
+                case 1:
+                    camera.rect = new Rect(0.5f, 0.5f, 0.5f, 0.5f);
+                    break;
+                case 2:
+                    camera.rect = new Rect(0, 0, 0.5f, 0.5f);
+                    break; 
+                case 3:
+                    camera.rect = new Rect(0.5f, 0, 0.5f, 0.5f);
+                    break; 
+                default:
+                    break;
+
+            }
+            /*
+                // Top left
+                cam1.rect = new Rect(0, 0.5f, 0.5f, 0.5f);
+
+                // Top right
+                cam2.rect = new Rect(0.5f, 0.5f, 0.5f, 0.5f);
+
+                // Bottom left
+                cam3.rect = new Rect(0, 0, 0.5f, 0.5f);
+
+                // Bottom right
+                cam4.rect = new Rect(0.5f, 0, 0.5f, 0.5f);
+
+
+
+                continue; 
+         Debug.Log("Camera lol");
+         float x = 0.5f;
+
+         if(pos % 2 !=  1)
+         {
+          x = 0; 
+         }
+
+
+                        camera.rect = new(
+                           x ,y,
+                            pos > 1 ? 0 : 0.5f,pos > 2 ? 0.5f : 1);
+            */
+
+                            pos++;
+                    
+                    
+        }
     }
 
     private void SpawnPlayer()
