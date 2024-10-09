@@ -18,23 +18,20 @@ public class SplitScreenManager : MonoBehaviour
 
     int index = 0; 
 
-    private void Start()
+    private void Awake()
     {
         int playersInGame = CrossSceneContainer.PlayersInGame;
 
-        if(playersInGame > Gamepad.all.Count)
-        {
-            playersInGame = Gamepad.all.Count;
-        }
+        Debug.Log(CrossSceneContainer.PlayersInGame); 
 
-        for(int i = 1; i < playersInGame; i++)
+        for(int i = 0; i < playersInGame; i++)
         {
             SpawnPlayer();
-            UpdateCameraView();
+           
             index++;
         }
-   
-  
+        UpdateCameraView();
+
     }
 
     public void AddPlayer(Player player)

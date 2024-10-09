@@ -1119,6 +1119,7 @@ GameObject:
   - component: {fileID: 584585634}
   - component: {fileID: 584585633}
   - component: {fileID: 584585632}
+  - component: {fileID: 584585635}
   m_Layer: 0
   m_Name: FinishLine
   m_TagString: Untagged
@@ -1175,6 +1176,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &584585635
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 584585631}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a02e22e385489e4499ab13279ebae44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &635744889
 GameObject:
   m_ObjectHideFlags: 0
@@ -1617,6 +1630,10 @@ PrefabInstance:
     - target: {fileID: 3303934124489859916, guid: 55c6b48c4a8c34e07a8ed6df5066f2fb, type: 3}
       propertyPath: m_Name
       value: Player Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 3303934124489859916, guid: 55c6b48c4a8c34e07a8ed6df5066f2fb, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6870072853617236318, guid: 55c6b48c4a8c34e07a8ed6df5066f2fb, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3428,6 +3445,10 @@ PrefabInstance:
     - target: {fileID: 1728581937385772991, guid: 956746db7dc5b47239c251bee9abacd0, type: 3}
       propertyPath: m_Name
       value: SpringArm Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 1728581937385772991, guid: 956746db7dc5b47239c251bee9abacd0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7050750526693869365, guid: 956746db7dc5b47239c251bee9abacd0, type: 3}
       propertyPath: m_LocalPosition.x

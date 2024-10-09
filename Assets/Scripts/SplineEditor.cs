@@ -7,7 +7,7 @@ using UnityEngine.Splines;
 [ExecuteInEditMode()]
 public class SplineEditor : MonoBehaviour
 {
-
+    /*
     [SerializeField] private SplineContainer splineContainer;
 
     [SerializeField] private int splineIndex;
@@ -28,4 +28,5 @@ public class SplineEditor : MonoBehaviour
         Handles.matrix = transform.localToWorldMatrix;
         Handles.SphereHandleCap(0, position, Quaternion.identity, 1f, EventType.Repaint);
     }
+    */
 }
