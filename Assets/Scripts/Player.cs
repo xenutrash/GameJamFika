@@ -14,6 +14,7 @@ public class Player : MonoBehaviour
     private float speedBoost = 0;
     private bool isDrifting = false;
     private float originalTurnRate;
+    public Animator animator;
 
     // Start is called before the first frame update
     void Start()
@@ -147,9 +148,10 @@ public class Player : MonoBehaviour
             this.speedBoost = 0;
             return;
         }
-
+        animator.SetTrigger("boost");
         Debug.Log("SpeedBoost yay");
         this.speedBoost = speedBoost * Stats.boostMultiplier;
+        
     }
 
     public void SetController(Gamepad pad)
