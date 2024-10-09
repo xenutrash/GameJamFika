@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(Rigidbody))]
 public class Player : MonoBehaviour
@@ -7,11 +8,13 @@ public class Player : MonoBehaviour
     public float currentSpeed { get; private set; }
     public bool AllowMovement { get; set; } = false;
     private Rigidbody rb;
-    public Camera attatchedCamera; 
+    public Camera attatchedCamera;
+    Gamepad controller; 
 
     private float speedBoost = 0;
     private bool isDrifting = false;
     private float originalTurnRate;
+    public Animator animator;
 
     // Start is called before the first frame update
     void Start()
@@ -33,7 +36,7 @@ public class Player : MonoBehaviour
             return;
         }
 
-        float turn = GetKeyboardInput();
+        float turn = controller == null ? GetKeyboardInput() : GetControllerInput();
 
         if (!isDrifting)
         {
@@ -57,6 +60,18 @@ public class Player : MonoBehaviour
             turn,
             transform.eulerAngles.z
         );
+        if(controller != null)
+        {
+            if (controller.aButton.IsPressed())
+            {
+                StartDrifting(); 
+            }else 
+            {
+                StopDrifting(); 
+            }
+            return; 
+        }
+
 
         if (Input.GetKeyDown(KeyCode.K))
         {
@@ -85,6 +100,24 @@ public class Player : MonoBehaviour
         return turn;
     }
 
+    float GetControllerInput()
+    {
+        float turn = transform.eulerAngles.y;
+
+        if(controller.leftStick.value.x > 0.1)
+        {
+            turn += (Stats.turnRate * Time.deltaTime * controller.leftStick.value.x);
+        }
+
+        if (controller.leftStick.value.x < -0.1)
+        {
+            turn -= (Stats.turnRate * Time.deltaTime * controller.leftStick.value.x *-1);
+        }
+
+        return turn; 
+    }
+
+
     void StartDrifting()
     {
         if (!isDrifting)
@@ -93,7 +126,7 @@ public class Player : MonoBehaviour
             Stats.turnRate *= 2f;
             currentSpeed *= 0.9f;
 
-            rb.drag = rb.drag * 0.5f; 
+            rb.drag *= 0.5f; 
         }
     }
 
@@ -115,8 +148,15 @@ public class Player : MonoBehaviour
             this.speedBoost = 0;
             return;
         }
-
+        animator.SetTrigger("boost");
         Debug.Log("SpeedBoost yay");
         this.speedBoost = speedBoost * Stats.boostMultiplier;
+        
     }
+
+    public void SetController(Gamepad pad)
+    {
+        controller = pad; 
+    }
+
 }

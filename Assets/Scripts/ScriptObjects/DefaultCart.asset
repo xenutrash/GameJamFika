@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: DefaultCart
   m_EditorClassIdentifier: 
   playerName: Default
-  maxSpeed: 15
+  maxSpeed: 25
   driftModifer: 3
   acceleration: 2
   turnRaduis: 360
-  turnRate: 40
+  turnRate: 60
   boostMultiplier: 1
   Object: {fileID: 0}
