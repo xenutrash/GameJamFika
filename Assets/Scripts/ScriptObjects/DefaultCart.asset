@@ -17,6 +17,6 @@ MonoBehaviour:
   driftModifer: 3
   acceleration: 2
   turnRaduis: 360
-  turnRate: 100
+  turnRate: 40
   boostMultiplier: 1
   Object: {fileID: 0}
