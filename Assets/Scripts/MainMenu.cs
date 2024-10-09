@@ -34,7 +34,7 @@ public class MainMenu : MonoBehaviour {
             playerButtons[i].enabled = false;
         }
 
-        for (int i = 0; i < AmountOfControllers -1; i++)
+        for (int i = 0; i < AmountOfControllers; i++)
         {
             playerButtons[i].enabled = true;
         }
