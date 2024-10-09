@@ -53,6 +53,17 @@ public class AudioManager : MonoBehaviour
 
         // Play the sound
         audioSourceCached.Play();
+       
+    }
+
+    public void Pause()
+    {
+        audioSourceCached.Pause();
+    }
+    
+    public void Resume()
+    {
+        audioSourceCached.UnPause();
     }
 
     public void PlayOneShot(string name)

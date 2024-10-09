@@ -77,6 +77,20 @@ public class Player : MonoBehaviour
                 Taunting = false;
             }
 
+            if (controller.startButton.isPressed)
+            {
+                if(PauseMenu.GetInstance() != null)
+                {
+                    PauseMenu.GetInstance().SetVisabability(true);
+                    Time.timeScale = 0;
+
+                    if(AudioManager.instance != null)
+                    {
+                        AudioManager.instance.Pause();
+                    }
+                }
+            }
+
             if (controller.aButton.IsPressed())
             {
                 StartDrifting(); 
@@ -84,6 +98,7 @@ public class Player : MonoBehaviour
             {
                 StopDrifting(); 
             }
+
             return; 
         }
 
