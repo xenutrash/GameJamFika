@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Rotater : MonoBehaviour
 {
-    float CurrentY = 0; 
+
     public float rotationRate = 0.2f;
     float CurrentRotastion = 0; 
     // Start is called before the first frame update
