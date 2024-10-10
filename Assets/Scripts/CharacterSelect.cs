@@ -1,7 +1,8 @@
-using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class CharacterSelect : MonoBehaviour
@@ -10,12 +11,14 @@ public class CharacterSelect : MonoBehaviour
     [SerializeField]
     Characters characters;
 
-    List<Button> CharacterButtons = new();
-    List<Button> SelectedButton = new();
+    public List<CharacterGUI> CharacterGUIs = new();
+    public List<Image> PlayerImages = new(); 
 
-    List<int> PlayerSelectedIndex = new();
 
-    List<Image> PlayerSelectImage = new(); 
+    public List<int> PlayerSelectedIndex = new();
+
+    private List<CharacterGUI> SelectedCharacter = new(); 
+
 
     private int PlayerInGame = 0; 
 
@@ -23,37 +26,46 @@ public class CharacterSelect : MonoBehaviour
     {
         // Do things 
         PlayerInGame = PlayerToStartWith;
-        GenerateGUI(); 
+        GenerateGUI();
+        
+       
         for(int i = 0; i < PlayerInGame; i++)
         {
+            PlayerSelectedIndex.Add(0);
+            SelectedCharacter.Add(null);
             switch (i)
             {
                 case 0:
                     PlayerSelectedIndex[0] = 0;
+                    PlayerImages[PlayerSelectedIndex[i]].sprite = CharacterGUIs[PlayerSelectedIndex[i]].CharacterImage.sprite;
                     break;
                 case 1:
-                    PlayerSelectedIndex[1] = CharacterButtons.Count / 2;
+                    PlayerSelectedIndex[1] = 1;
+                    PlayerImages[PlayerSelectedIndex[i]].sprite = CharacterGUIs[PlayerSelectedIndex[i]].CharacterImage.sprite;
                     break;
                 case 2:
-                    PlayerSelectedIndex[2] = CharacterButtons.Count / 2;
+                    PlayerSelectedIndex[2] = 2;
+                    PlayerImages[PlayerSelectedIndex[i]].sprite = CharacterGUIs[PlayerSelectedIndex[i]].CharacterImage.sprite;
                     break;
                 case 3:
-                    PlayerSelectedIndex[3] = CharacterButtons.Count -1;
+                    PlayerSelectedIndex[3] = 3;
+                    PlayerImages[PlayerSelectedIndex[i]].sprite = CharacterGUIs[PlayerSelectedIndex[i]].CharacterImage.sprite;
                     break; 
             }
 
 
         }
-        enabled = true; 
+
     }
 
+    
     
 
 
     // Start is called before the first frame update
     void Start()
     {
-        enabled = false; 
+        StartWithPlayers(CrossSceneContainer.PlayersInGame); 
     }
 
     // Update is called once per frame
@@ -63,49 +75,70 @@ public class CharacterSelect : MonoBehaviour
 
         for(int i = 0; i < PlayerInGame; i++)
         {
+            if (Gamepad.all.Count <= i) break; 
             Gamepad gamepad = Gamepad.all[i];
             int SelectedIndex = PlayerSelectedIndex[i];
+
             //Moving left
-            if(gamepad.leftStick.value.x > 0.5f)
+            if(gamepad.leftStick.value.x >= 0.87)
             {
-                if(SelectedIndex == 0)
-                {
-                    SelectedIndex = CharacterButtons.Count - 1;
-                }else
-
-                if(SelectedIndex >= CharacterButtons.Count)
-                {
-                    SelectedIndex = 0; 
-                }else 
-                {
-                    SelectedIndex++; 
-                }
-
+              SelectedIndex++; 
             }
+
             // moving right
-            if (gamepad.leftStick.value.x > -0.5f)
+            if (gamepad.leftStick.value.x <= -0.87)
             {
-                if (SelectedIndex == 0)
-                {
-                    SelectedIndex = CharacterButtons.Count - 1;
-                }
-                else
+                SelectedIndex--; 
+            }
+            Debug.Log(SelectedIndex);
 
-                if (SelectedIndex >= CharacterButtons.Count)
+            if (SelectedIndex < 0)
+            {
+                SelectedIndex = CharacterGUIs.Count - 1;
+            }
+            else if (SelectedIndex >= CharacterGUIs.Count)
+            {
+                SelectedIndex = 0;
+            }
+
+            if (gamepad.aButton.isPressed)
+            {
+                SelectedCharacter[i] = CharacterGUIs[SelectedIndex];
+
+                switch (i)
                 {
-                    SelectedIndex = 0;
-                }
-                else
-                {
-                    SelectedIndex--;
+                    case 0:
+                        CrossSceneContainer.Player1SelectedCharacter = SelectedCharacter[i].Character.NameOfCharacter;
+                        break;
+                    case 1:
+                        CrossSceneContainer.Player2SelectedCharacter = SelectedCharacter[i].Character.NameOfCharacter;
+                        break;
+                    case 2:
+                        CrossSceneContainer.Player3SelectedCharacter = SelectedCharacter[i].Character.NameOfCharacter;
+                        break;
+                    case 3:
+                        CrossSceneContainer.Player4SelectedCharacter = SelectedCharacter[i].Character.NameOfCharacter;
+                        break;
                 }
 
+
+
+                if (CheckStartCondistion())
+                {
+                    enabled = false;
+                    LoadMainGame();
+                    break;
+                }
+               
             }
 
 
-            SelectedButton[i] = CharacterButtons[SelectedIndex];
+            if (SelectedIndex == PlayerSelectedIndex[i]) continue;
+            Debug.Log(PlayerImages.Count);
+            Debug.Log(SelectedIndex);
+            
             PlayerSelectedIndex[i] = SelectedIndex;
-            PlayerSelectImage[i].transform.position = SelectedButton[i].transform.position; 
+            PlayerImages[i].sprite = CharacterGUIs[SelectedIndex].CharacterImage.sprite; 
 
         }
 
@@ -114,15 +147,37 @@ public class CharacterSelect : MonoBehaviour
 
     private void GenerateGUI()
     {
+        int Added = 0; 
         foreach(var character in characters.characterContainers)
         {
 
+            if(Added >= CharacterGUIs.Count)
+            {
+                break; 
+            }
+            Debug.Log(Added);
+            CharacterGUIs[Added].CharacterImage.sprite = character.CharacterImage;
+            CharacterGUIs[Added].CharacterText.text = character.NameOfCharacter;
+            CharacterGUIs[Added].Character = character;
 
-            // Spawn here 
+            Added++;
 
         }
 
-
     }
 
+    private bool CheckStartCondistion()
+    {
+        foreach(var SelChar in SelectedCharacter)
+        {
+            if (SelChar == null) return false; 
+
+        }
+        return true; 
+    }
+
+    private void LoadMainGame()
+    {
+        SceneManager.LoadScene(1);
+    }
 }

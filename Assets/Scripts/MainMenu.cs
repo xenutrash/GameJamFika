@@ -79,7 +79,7 @@ public class MainMenu : MonoBehaviour {
     {
 
         CrossSceneContainer.PlayersInGame = players; 
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        SceneManager.LoadScene("Characters");
 
     }
 
