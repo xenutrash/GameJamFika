@@ -143,7 +143,7 @@ public class CharacterSelect : MonoBehaviour
                 Acumulator = 0; 
             }
 
-            if (SelectedIndex == PlayerSelectedIndex[i]) continue;
+            //if (SelectedIndex == PlayerSelectedIndex[i]) continue;
             Debug.Log(PlayerImages.Count);
             Debug.Log(SelectedIndex);
             
