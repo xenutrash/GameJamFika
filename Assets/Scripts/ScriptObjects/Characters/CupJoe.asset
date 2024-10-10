@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: CupJoe
   m_EditorClassIdentifier: 
   playerName: CupJoe
-  maxSpeed: 25
+  maxSpeed: 26
   driftModifer: 3
   acceleration: 1.7
   turnRaduis: 360
@@ -27,3 +27,4 @@ MonoBehaviour:
   LastPlaceSound: 
   hitSound: 
   tauntSound: GiveMeYourFish
+  CanBreak: 0

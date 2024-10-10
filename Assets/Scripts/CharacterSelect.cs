@@ -138,10 +138,7 @@ public class CharacterSelect : MonoBehaviour
                
             }
 
-            if(Acumulator >= TimeBeforeActAgain)
-            {
-                Acumulator = 0; 
-            }
+
 
             //if (SelectedIndex == PlayerSelectedIndex[i]) continue;
             Debug.Log(PlayerImages.Count);
@@ -150,6 +147,11 @@ public class CharacterSelect : MonoBehaviour
             PlayerSelectedIndex[i] = SelectedIndex;
             PlayerImages[i].sprite = CharacterGUIs[SelectedIndex].CharacterImage.sprite; 
 
+        }
+
+        if (Acumulator >= TimeBeforeActAgain)
+        {
+            Acumulator = 0;
         }
 
 
