@@ -29,7 +29,6 @@ public class SplitScreenManager : MonoBehaviour
         for(int i = 0; i < playersInGame; i++)
         {
             SpawnPlayer();
-           
             index++;
         }
         UpdateCameraView();
@@ -106,6 +105,7 @@ public class SplitScreenManager : MonoBehaviour
         if(index == 0) // makes sure only one audio listiner is in the scene 
         {
             spawnedCamera.transform.GetChild(0).AddComponent<AudioListener>();
+            Debug.Log("added an audio listiner"); 
         }
 
         player.SetController(pad);
