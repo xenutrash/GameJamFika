@@ -10,7 +10,7 @@ public class SplitScreenManager : MonoBehaviour
 
 
     readonly List<Camera> cameras = new();
-    readonly List<Player> players = new();
+    public List<Player> players = new();
     public GameObject playerToSpawn;
     public GameObject playerCameraRig;
     [SerializeField]
