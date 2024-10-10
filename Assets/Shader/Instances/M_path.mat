@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-238576144052785780
+--- !u!114 &-3481011124666124364
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
@@ -20,9 +20,9 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: M_path
-  m_Shader: {fileID: -6465566751694194690, guid: 2df54bba0c3fb4144bbb219a012725dd, type: 3}
-  m_Parent: {fileID: 0}
+  m_Name: M_Path
+  m_Shader: {fileID: -6465566751694194690, guid: a86ca1dde9d58974c880c7a06d1881c2, type: 3}
+  m_Parent: {fileID: -876546973899608171, guid: a86ca1dde9d58974c880c7a06d1881c2, type: 3}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
   m_InvalidKeywords: []
@@ -37,35 +37,22 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _MainTexture:
-        m_Texture: {fileID: 2800000, guid: 6eb9865b5157a234ca087022d86b1903, type: 3}
+        m_Texture: {fileID: 2800000, guid: ec1a6f6281e8281439cb0ad08020d147, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _T_PaintStroke:
-        m_Texture: {fileID: 2800000, guid: 6eb9865b5157a234ca087022d86b1903, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - unity_Lightmaps:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - unity_LightmapsInd:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - unity_ShadowMasks:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: ec1a6f6281e8281439cb0ad08020d147, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
     - _Brightness: 1
-    - _Offset: 0.6
-    - _Overlay_Strength: 1
+    - _Offset: 0
     - _QueueControl: 0
-    - _QueueOffset: 0
-    - _Strength: 0.8
-    - _Stroke_Scale: 1
+    - _Scroll_Speed: 10
+    - _Strength: 0
+    - _Tile: 0.1
     m_Colors:
-    - _Color_A: {r: 0.38327694, g: 0.7210168, b: 0.8207547, a: 1}
-    - _Color_B: {r: 0.18382877, g: 0.3007083, b: 0.4811321, a: 1}
+    - _Color_A: {r: 0.48420256, g: 0.6854609, b: 0.8773585, a: 1}
+    - _Color_B: {r: 0.23584908, g: 0.23584908, b: 0.23584908, a: 1}
   m_BuildTextureStacks: []
