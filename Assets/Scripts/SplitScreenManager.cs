@@ -133,7 +133,11 @@ public class SplitScreenManager : MonoBehaviour
             spawnedCamera.transform.GetChild(0).AddComponent<AudioListener>();
             Debug.Log("added an audio listiner"); 
         }
-
+        player.respawnPos = spawnPoints[index].transform;
+        if(player.respawnPos == null)
+        {
+            Debug.Log(":(");
+        }
         player.SetController(pad);
         player.attatchedCamera = camera;
         player.AllowMovement = false;

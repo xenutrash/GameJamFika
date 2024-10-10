@@ -16,6 +16,8 @@ public class Player : MonoBehaviour
     private float originalTurnRate;
     public Animator animator;
 
+    public Transform respawnPos = null; 
+
     bool Taunting = false; 
 
     // Start is called before the first frame update
@@ -266,6 +268,14 @@ public class Player : MonoBehaviour
             }
         }
 
+    }
+
+    public void Repspawn()
+    {
+        // resets vel
+        rb.velocity = Vector3.zero;
+        transform.SetPositionAndRotation(respawnPos.position, respawnPos.rotation);
+        PlayAudioOneShoot(Stats.LastPlaceSound);
     }
 
 }
