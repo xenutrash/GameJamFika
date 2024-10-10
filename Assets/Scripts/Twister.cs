@@ -90,6 +90,9 @@ public class Twister : MonoBehaviour
             otherPlayer.transform.rotation = playerRotation;
             otherPlayer.transform.position = playerPosition + new Vector3(0, 2, 0);
 
+            player.GetComponent<Player>().respawnPos = otherPlayer.transform;
+            otherPlayer.GetComponent<Player>().respawnPos = player.transform;
+
             // Play particle systems at the swap positions
             p1.transform.position = playerPosition;
             p2.transform.position = otherPosition;

@@ -192,6 +192,10 @@ PrefabInstance:
       value: -10.3
       objectReference: {fileID: 0}
     - target: {fileID: 3487098604929909793, guid: 05ac41738c6244ff78f6b5fe8d830d25, type: 3}
+      propertyPath: Stats
+      value: 
+      objectReference: {fileID: 11400000, guid: 8fdc4c2636942534f9d766998d1351f5, type: 2}
+    - target: {fileID: 3487098604929909793, guid: 05ac41738c6244ff78f6b5fe8d830d25, type: 3}
       propertyPath: driftDrag
       value: 3
       objectReference: {fileID: 0}
