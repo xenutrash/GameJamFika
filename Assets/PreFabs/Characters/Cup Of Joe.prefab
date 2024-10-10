@@ -924,7 +924,7 @@ MonoBehaviour:
   attatchedCamera: {fileID: 0}
   respawnPos: {fileID: 0}
   animator: {fileID: 0}
-  driftFactor: 2
+  driftFactor: 7
   driftDrag: 3
   normalDrag: 0.05
   name: 

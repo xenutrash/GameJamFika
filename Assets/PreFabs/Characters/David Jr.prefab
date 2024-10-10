@@ -201,7 +201,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3487098604929909793, guid: 05ac41738c6244ff78f6b5fe8d830d25, type: 3}
       propertyPath: driftFactor
-      value: 2
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 3811264781394385637, guid: 05ac41738c6244ff78f6b5fe8d830d25, type: 3}
       propertyPath: m_Materials.Array.data[0]
