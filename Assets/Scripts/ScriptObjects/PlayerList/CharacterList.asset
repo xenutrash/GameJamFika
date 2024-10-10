@@ -15,8 +15,11 @@ MonoBehaviour:
   characterContainers:
   - CharacterPrefab: {fileID: 3303934124489859916, guid: 94c7abd5b8647466daad08d9f5b80a71, type: 3}
     NameOfCharacter: Ouppy
+    CharacterImage: {fileID: 0}
   - CharacterPrefab: {fileID: 3303934124489859916, guid: 55c6b48c4a8c34e07a8ed6df5066f2fb, type: 3}
     NameOfCharacter: DavidJr
-  - CharacterPrefab: {fileID: 0}
-    NameOfCharacter: 
+    CharacterImage: {fileID: 0}
+  - CharacterPrefab: {fileID: 919132149155446097, guid: 18ded96f583124a0785cc98009d6c0a6, type: 3}
+    NameOfCharacter: CupJoe
+    CharacterImage: {fileID: 0}
   defaultCharacter: {fileID: 3303934124489859916, guid: 55c6b48c4a8c34e07a8ed6df5066f2fb, type: 3}
