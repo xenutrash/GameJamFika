@@ -19,7 +19,7 @@ public class GameManager : MonoBehaviour
     private SplitScreenManager splitManager {  get;  set; }
 
     private float acumulator = 0; 
-   readonly System.Random rand = new System.Random();
+    readonly System.Random rand = new System.Random();
     
 
 
