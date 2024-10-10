@@ -41,7 +41,8 @@ public class GameManager : MonoBehaviour
                 Debug.Log("No bg tracks");
                 return;
             }
-            string TrackToPlay = Bg_Tracks[rand.Next(Bg_Tracks.Length)];
+            
+            string TrackToPlay = Bg_Tracks[rand.Next(0,Bg_Tracks.Length+1)];
             PlayAudio(TrackToPlay);
         }
     }
@@ -60,9 +61,6 @@ public class GameManager : MonoBehaviour
             Debug.Log("No AudioManager in Scene");
             return; 
         }
-
-
-
         AudioManager.instance.Play(audioToPlay);
     }
 
