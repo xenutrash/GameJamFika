@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: OuppyCart
   m_EditorClassIdentifier: 
   playerName: TheOuppy
-  maxSpeed: 30
+  maxSpeed: 25
   driftModifer: 4
   acceleration: 1.5
   turnRaduis: 360
