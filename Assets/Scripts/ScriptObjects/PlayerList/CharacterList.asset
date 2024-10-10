@@ -18,5 +18,5 @@ MonoBehaviour:
   - CharacterPrefab: {fileID: 3303934124489859916, guid: 55c6b48c4a8c34e07a8ed6df5066f2fb, type: 3}
     NameOfCharacter: DavidJr
   - CharacterPrefab: {fileID: 0}
-    NameOfCharacter: 
+    NameOfCharacter: CupJoe
   defaultCharacter: {fileID: 3303934124489859916, guid: 55c6b48c4a8c34e07a8ed6df5066f2fb, type: 3}
