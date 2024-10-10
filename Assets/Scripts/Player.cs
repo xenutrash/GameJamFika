@@ -185,7 +185,11 @@ public class Player : MonoBehaviour
         }
 
         PlayAudioOneShoot(Stats.BoostSound);
-        animator.SetTrigger("boost");
+        if(animator != null)
+        {
+            animator.SetTrigger("boost");
+        }
+        
         Debug.Log("SpeedBoost yay");
         this.speedBoost = speedBoost * Stats.boostMultiplier;
         
@@ -210,7 +214,11 @@ public class Player : MonoBehaviour
     private void PlayTaunt()
     {
         PlayAudioOneShoot(Stats.tauntSound);
-        animator.SetTrigger("boost");
+        if(animator != null)
+        {
+          animator.SetTrigger("boost");
+        }
+        
 
 
     }

@@ -90,7 +90,12 @@ public class SplitScreenManager : MonoBehaviour
     {
         Debug.Log("Spawning thing");
         spawnPoints[index].transform.GetPositionAndRotation(out Vector3 pos, out Quaternion rotastion);
-        Gamepad pad = Gamepad.all[index];
+        Gamepad pad = null; 
+        if(Gamepad.all.Count > index)
+        {
+            pad = Gamepad.all[index];
+        }
+        
 
         GameObject spawnedPlayer = Instantiate<GameObject>(playerToSpawn);
         spawnedPlayer.transform.SetPositionAndRotation(pos, rotastion);
