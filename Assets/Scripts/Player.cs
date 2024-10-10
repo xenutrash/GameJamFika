@@ -24,6 +24,8 @@ public class Player : MonoBehaviour
     public float driftDrag = 2f;
     public float normalDrag = 0.05f;
 
+    public string name;
+
     // Start is called before the first frame update
     void Start()
     {

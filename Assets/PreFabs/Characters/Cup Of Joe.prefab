@@ -884,7 +884,7 @@ GameObject:
   - component: {fileID: 5701456269822051853}
   m_Layer: 0
   m_Name: Cup Of Joe
-  m_TagString: Player1
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -926,6 +926,7 @@ MonoBehaviour:
   driftFactor: 2
   driftDrag: 3
   normalDrag: 0.05
+  name: 
 --- !u!33 &4428667583059613823
 MeshFilter:
   m_ObjectHideFlags: 0
