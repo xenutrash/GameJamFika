@@ -9,11 +9,53 @@ public class Intro2DManager : MonoBehaviour {
     [SerializeField] private string triggerName = "Play"; // Namnet på samma trigger för alla objekten
 
     [SerializeField] private float countdownInterval = 1f;  // Tidsintervall mellan varje steg i nedräkningen
-   // [SerializeField] private float soundCountdown = 2f;
+                                                            // [SerializeField] private float soundCountdown = 2f;
+
+    float Acumulater = 0; 
+    int index = 0;
 
     void Start()
     {
-        StartCoroutine(StartCountdown());
+        // Cheat way to fix the first thing playing 
+        Acumulater = countdownInterval;
+    }
+
+
+
+    private void Update()
+    {
+        
+        Acumulater += Time.deltaTime;
+
+        if (Acumulater > countdownInterval)
+        {
+
+            GameObject currentObject = countdownObjects[index];
+            Animator animator = currentObject.GetComponent<Animator>();
+            index++; 
+
+            // Spela animationen med samma trigger
+            if (animator != null)
+            {
+                animator.SetTrigger(triggerName);
+            }
+
+            if(index >= countdownObjects.Length)
+            {
+                gameObject.SetActive(false);
+                enabled = false;
+            }
+
+
+            Acumulater = 0; 
+
+        }
+
+
+
+
+
+
     }
 
     IEnumerator StartCountdown()
