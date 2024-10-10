@@ -47,12 +47,14 @@ Material:
     m_Ints: []
     m_Floats:
     - _Brightness: 1
-    - _Offset: 0
+    - _Offset: 0.3
     - _QueueControl: 0
-    - _Scroll_Speed: 10
-    - _Strength: 0
+    - _Scroll_Speed: 0
+    - _Strength: 0.8
     - _Tile: 0.1
     m_Colors:
-    - _Color_A: {r: 0.48420256, g: 0.6854609, b: 0.8773585, a: 1}
-    - _Color_B: {r: 0.23584908, g: 0.23584908, b: 0.23584908, a: 1}
+    - _Color_A: {r: 0.5294118, g: 0.6442937, b: 0.81960785, a: 1}
+    - _Color_B: {r: 0.27725625, g: 0.251513, b: 0.2830189, a: 1}
+    - _Rim_Color_A: {r: 0.7056604, g: 0.566234, b: 0.36081874, a: 0}
+    - _Rim_Color_B: {r: 0.7433963, g: 0.15458322, b: 0.049092103, a: 0}
   m_BuildTextureStacks: []

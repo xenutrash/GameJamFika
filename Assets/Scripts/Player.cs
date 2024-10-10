@@ -49,13 +49,13 @@ public class Player : MonoBehaviour
         if (isDrifting)
         {
             ReduceDriftSpeed();
-            if (Input.GetKey(KeyCode.D))
+            if (Input.GetKey(KeyCode.D) || controller.leftStick.value.x > 0.1)
             {
                 Vector3 driftForce = -transform.right * rb.velocity.magnitude * driftFactor;
                 driftForce.y = 0;
                 rb.AddForce(driftForce, ForceMode.Acceleration);
             }
-            else if (Input.GetKey(KeyCode.A))
+            else if (Input.GetKey(KeyCode.A) || controller.leftStick.value.x < -0.1)
             {
                 Vector3 driftForce = transform.right * rb.velocity.magnitude * driftFactor;
                 driftForce.y = 0;
@@ -89,6 +89,15 @@ public class Player : MonoBehaviour
 
         if (controller != null)
         {
+            if (controller.rightTrigger.isPressed)
+            {
+                isDrifting = true;
+            }
+            else
+            {
+                isDrifting = false;
+            }
+
             if (controller.yButton.isPressed && !Taunting)
             {
                 PlayTaunt();
