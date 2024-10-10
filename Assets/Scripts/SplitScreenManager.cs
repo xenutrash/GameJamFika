@@ -20,6 +20,9 @@ public class SplitScreenManager : MonoBehaviour
     [SerializeField]
     Characters characters;
 
+    [SerializeField]
+    GameObject PlayerHud; 
+
 
     int index = 0; 
 
@@ -128,6 +131,11 @@ public class SplitScreenManager : MonoBehaviour
         SpringArm springArm = spawnedCamera.GetComponent<SpringArm>();
         springArm.target = spawnedPlayer.transform;
         Camera camera = spawnedCamera.GetComponentInChildren<Camera>();
+        GameObject playerHudObject = Instantiate<GameObject>(PlayerHud);
+        PlayerHUDScript playerHud = playerHudObject.GetComponent<PlayerHUDScript>();
+
+        player.hud = playerHud;
+        playerHud.SetOwner(camera); 
 
         if(index == 0) // makes sure only one audio listiner is in the scene 
         {

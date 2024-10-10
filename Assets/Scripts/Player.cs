@@ -24,6 +24,8 @@ public class Player : MonoBehaviour
     public float driftDrag = 2f;
     public float normalDrag = 0.05f;
 
+    public PlayerHUDScript hud; 
+
     public string name;
 
     // Start is called before the first frame update
@@ -87,7 +89,8 @@ public class Player : MonoBehaviour
             turn,
             transform.eulerAngles.z);
 
-
+        int SpeedFormated = (int)currentSpeed; 
+        hud.SetSpeedText(SpeedFormated + " cm/s");
 
         if (controller != null)
         {
@@ -130,6 +133,7 @@ public class Player : MonoBehaviour
         {
             isDrifting = false;
         }
+
     }
 
     float GetKeyboardInput()
