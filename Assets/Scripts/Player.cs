@@ -46,7 +46,40 @@ public class Player : MonoBehaviour
             return;
         }
 
-       // float turn = controller == null ? GetKeyboardInput() : GetControllerInput();
+        //Drifting
+        if (isDrifting)
+        {
+
+            //Kanske behövs göras så man checkar vilket håll man driftar åt
+            if (Input.GetKey(KeyCode.D))
+            {
+                Vector3 driftForce = -transform.right * rb.velocity.magnitude * driftFactor;
+                driftForce.y = 0;
+                rb.AddForce(driftForce, ForceMode.Acceleration);
+            }
+            else if (Input.GetKey(KeyCode.A))
+            {
+                Vector3 driftForce = transform.right * rb.velocity.magnitude * driftFactor;
+                driftForce.y = 0;
+                rb.AddForce(driftForce, ForceMode.Acceleration);
+            }
+
+            if (currentSpeed >= Stats.maxSpeed + speedBoost)
+            {
+                currentSpeed = Mathf.Lerp(currentSpeed, Stats.maxSpeed + speedBoost-5, Stats.acceleration * Time.deltaTime);
+            }
+
+            if (currentSpeed < Stats.maxSpeed + speedBoost)
+            {
+                currentSpeed = Mathf.Lerp(currentSpeed, Stats.maxSpeed + speedBoost - 5, Stats.acceleration * Time.deltaTime);
+            }
+
+            rb.drag = driftDrag;
+        }
+        else
+        {
+
+            rb.drag = normalDrag;
 
             if (currentSpeed >= Stats.maxSpeed + speedBoost)
             {
@@ -57,6 +90,9 @@ public class Player : MonoBehaviour
             {
                 currentSpeed = Mathf.Lerp(currentSpeed, Stats.maxSpeed + speedBoost, Stats.acceleration * Time.deltaTime);
             }
+        }
+        // float turn = controller == null ? GetKeyboardInput() : GetControllerInput();
+
 
         float turn = transform.eulerAngles.y;
         if (Input.GetKey(KeyCode.D)) 
@@ -79,29 +115,7 @@ public class Player : MonoBehaviour
             transform.eulerAngles.z
         );
 
-       //Drifting
-        if (isDrifting)
-        {
-
-
-            //Kanske behövs göras så man checkar vilket håll man driftar åt
-
-            Vector3 driftForce = -transform.right * rb.velocity.magnitude * driftFactor;
-           // rb.AddForce(driftForce, ForceMode.Acceleration);
-
-
-            //Nytt som ska provas
-            driftForce.y = rb.velocity.y;
-            rb.velocity = driftForce;
-
-            
-            rb.drag = driftDrag;
-        }
-        else
-        {
-            
-            rb.drag = normalDrag;
-        }
+      
 
 
 
@@ -171,6 +185,24 @@ public class Player : MonoBehaviour
         }
 
         return turn;
+    }
+
+    int GetDirection()
+    {
+        if (Input.GetKey(KeyCode.D))
+        {
+            return 1;
+        }
+
+        else if (Input.GetKey(KeyCode.A))
+        {
+            return -1;
+        }
+        else
+        {
+            return 0;
+        }
+
     }
 
     float GetControllerInput()
