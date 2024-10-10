@@ -41,9 +41,13 @@ public class GameManager : MonoBehaviour
             }
             
             string TrackToPlay = Bg_Tracks[rand.Next(0,Bg_Tracks.Length)];
+            Debug.Log("Selected track " + TrackToPlay);
             PlayAudio(TrackToPlay);
+            acumulator = 0; 
         }
     }
+
+
 
     public void StartGame(SplitScreenManager manager)
     {
