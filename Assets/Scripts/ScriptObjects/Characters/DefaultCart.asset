@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: DefaultCart
   m_EditorClassIdentifier: 
   playerName: Default
-  maxSpeed: 23
+  maxSpeed: 26
   driftModifer: 4
   acceleration: 1.5
   turnRaduis: 360
