@@ -859,8 +859,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 3487098604929909793, guid: 05ac41738c6244ff78f6b5fe8d830d25, type: 3}
+      propertyPath: driftDrag
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3487098604929909793, guid: 05ac41738c6244ff78f6b5fe8d830d25, type: 3}
       propertyPath: extraDrift
       value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 3487098604929909793, guid: 05ac41738c6244ff78f6b5fe8d830d25, type: 3}
+      propertyPath: driftFactor
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3811264781394385637, guid: 05ac41738c6244ff78f6b5fe8d830d25, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -868,7 +876,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: f21953db803337d49b10c7c1fad163a3, type: 2}
     - target: {fileID: 4715040890305707996, guid: 05ac41738c6244ff78f6b5fe8d830d25, type: 3}
       propertyPath: m_Drag
-      value: 3
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 4715040890305707996, guid: 05ac41738c6244ff78f6b5fe8d830d25, type: 3}
       propertyPath: m_UseGravity
@@ -959,7 +967,7 @@ CapsuleCollider:
   m_Radius: 2.9254408
   m_Height: 3.65
   m_Direction: 1
-  m_Center: {x: 0.12, y: 1.76, z: -0.47910997}
+  m_Center: {x: -0.2, y: 3.15, z: 0.07}
 --- !u!114 &8830808833382607653
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -972,15 +980,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0b0694e0b0efd549ae0ed2c1a1bdf0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  raycastLength: 0.3
+  raycastLength: 0.41
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
   rotationSpeed: 10
-  frontOffset: {x: 0, y: 0, z: 1.39}
-  backOffset: {x: 0, y: 0, z: -2.16}
-  leftOffset: {x: -1.45, y: 0, z: 0}
-  rightOffset: {x: 1.48, y: 0, z: 0}
+  frontOffset: {x: 0, y: 1.5, z: 2.1}
+  backOffset: {x: -0.03, y: 1.5, z: -2.16}
+  leftOffset: {x: -1.53, y: 1.5, z: 0}
+  rightOffset: {x: 2.08, y: 1.5, z: 0}
 --- !u!4 &6870072853617236318 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3002874082281037378, guid: 05ac41738c6244ff78f6b5fe8d830d25, type: 3}

@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -42,7 +40,7 @@ public class GameManager : MonoBehaviour
                 return;
             }
             
-            string TrackToPlay = Bg_Tracks[rand.Next(0,Bg_Tracks.Length+1)];
+            string TrackToPlay = Bg_Tracks[rand.Next(0,Bg_Tracks.Length)];
             PlayAudio(TrackToPlay);
         }
     }

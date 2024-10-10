@@ -81,8 +81,16 @@ PrefabInstance:
       value: -10.3
       objectReference: {fileID: 0}
     - target: {fileID: 3487098604929909793, guid: 05ac41738c6244ff78f6b5fe8d830d25, type: 3}
+      propertyPath: driftDrag
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3487098604929909793, guid: 05ac41738c6244ff78f6b5fe8d830d25, type: 3}
       propertyPath: extraDrift
       value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 3487098604929909793, guid: 05ac41738c6244ff78f6b5fe8d830d25, type: 3}
+      propertyPath: driftFactor
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3811264781394385637, guid: 05ac41738c6244ff78f6b5fe8d830d25, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -90,7 +98,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: f21953db803337d49b10c7c1fad163a3, type: 2}
     - target: {fileID: 4715040890305707996, guid: 05ac41738c6244ff78f6b5fe8d830d25, type: 3}
       propertyPath: m_Drag
-      value: 3
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 4715040890305707996, guid: 05ac41738c6244ff78f6b5fe8d830d25, type: 3}
       propertyPath: m_UseGravity
@@ -106,7 +114,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6567042490061038672, guid: 05ac41738c6244ff78f6b5fe8d830d25, type: 3}
       propertyPath: m_Name
-      value: Player Variant
+      value: David Jr
       objectReference: {fileID: 0}
     - target: {fileID: 6567042490061038672, guid: 05ac41738c6244ff78f6b5fe8d830d25, type: 3}
       propertyPath: m_IsActive
