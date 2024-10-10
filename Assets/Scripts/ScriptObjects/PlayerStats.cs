@@ -20,6 +20,7 @@ public class PlayerStats : ScriptableObject
     public string LastPlaceSound;
     public string hitSound;
     public string tauntSound;
+    public bool CanBreak; 
 
     
     

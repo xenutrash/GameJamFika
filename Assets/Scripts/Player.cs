@@ -42,15 +42,17 @@ public class Player : MonoBehaviour
 
         if (!isDrifting)
         {
-            if (currentSpeed >= Stats.maxSpeed + speedBoost)
+            if ((Input.GetKey(KeyCode.W) || IsAButtonPressed()))
             {
-                currentSpeed = Mathf.Lerp(currentSpeed, Stats.maxSpeed + speedBoost, Stats.acceleration * Time.deltaTime);
+                Accelerate();
             }
 
-            if (currentSpeed < Stats.maxSpeed + speedBoost)
+            if (Input.GetKey(KeyCode.S) || IsBButtonPressed())
             {
-                currentSpeed = Mathf.Lerp(currentSpeed, Stats.maxSpeed + speedBoost, Stats.acceleration * Time.deltaTime);
+                DeAccelerate();
             }
+            
+            
         }
 
         Vector3 vel = transform.forward * currentSpeed;
@@ -79,16 +81,7 @@ public class Player : MonoBehaviour
 
             if (controller.startButton.isPressed)
             {
-                if(PauseMenu.GetInstance() != null)
-                {
-                    PauseMenu.GetInstance().SetVisabability(true);
-                    Time.timeScale = 0;
-
-                    if(AudioManager.instance != null)
-                    {
-                        AudioManager.instance.Pause();
-                    }
-                }
+                Pause(); 
             }
 
             if (controller.aButton.IsPressed())
@@ -101,7 +94,10 @@ public class Player : MonoBehaviour
 
             return; 
         }
-
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Pause(); 
+        }
 
         if (Input.GetKeyDown(KeyCode.K))
         {
@@ -220,6 +216,55 @@ public class Player : MonoBehaviour
         }
         
 
+
+    }
+
+    private bool IsAButtonPressed()
+    {
+        if (controller == null) return false;
+        return controller.aButton.IsPressed(); 
+    }
+
+    private bool IsBButtonPressed()
+    {
+        if (controller == null) return false;
+        return controller.bButton.IsPressed();
+    }
+
+    private void Accelerate()
+    {
+        if (currentSpeed >= Stats.maxSpeed + speedBoost)
+        {
+            currentSpeed = Mathf.Lerp(currentSpeed, Stats.maxSpeed + speedBoost, Stats.acceleration * Time.deltaTime);
+        }
+
+        if (currentSpeed < Stats.maxSpeed + speedBoost)
+        {
+            currentSpeed = Mathf.Lerp(currentSpeed, Stats.maxSpeed + speedBoost, Stats.acceleration * Time.deltaTime);
+        }
+
+    }
+
+    private void DeAccelerate()
+    {
+     
+      currentSpeed = Mathf.Lerp(currentSpeed, 0, Stats.acceleration * Time.deltaTime);
+        
+    }
+
+
+    private void Pause() {
+
+        if (PauseMenu.GetInstance() != null)
+        {
+            PauseMenu.GetInstance().SetVisabability(true);
+            Time.timeScale = 0;
+
+            if (AudioManager.instance != null)
+            {
+                AudioManager.instance.Pause();
+            }
+        }
 
     }
 
