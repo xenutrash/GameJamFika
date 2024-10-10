@@ -22,4 +22,7 @@ MonoBehaviour:
   - CharacterPrefab: {fileID: 1750527005617442404, guid: b01e21d1f22914627998311aecef8379, type: 3}
     NameOfCharacter: CupJoe
     CharacterImage: {fileID: 21300000, guid: f6aa7ebd784d14abc97f34b00cc46176, type: 3}
+  - CharacterPrefab: {fileID: 1750527005617442404, guid: b01e21d1f22914627998311aecef8379, type: 3}
+    NameOfCharacter: CupJoe
+    CharacterImage: {fileID: 21300000, guid: f6aa7ebd784d14abc97f34b00cc46176, type: 3}
   defaultCharacter: {fileID: 3303934124489859916, guid: 94c7abd5b8647466daad08d9f5b80a71, type: 3}

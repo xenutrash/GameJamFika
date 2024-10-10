@@ -19,7 +19,7 @@ public class GameManager : MonoBehaviour
     private SplitScreenManager splitManager {  get;  set; }
 
     private float acumulator = 0; 
-   readonly System.Random rand = new System.Random();
+    readonly System.Random rand = new System.Random();
     
 
 
@@ -41,9 +41,13 @@ public class GameManager : MonoBehaviour
             }
             
             string TrackToPlay = Bg_Tracks[rand.Next(0,Bg_Tracks.Length)];
+            Debug.Log("Selected track " + TrackToPlay);
             PlayAudio(TrackToPlay);
+            acumulator = 0; 
         }
     }
+
+
 
     public void StartGame(SplitScreenManager manager)
     {

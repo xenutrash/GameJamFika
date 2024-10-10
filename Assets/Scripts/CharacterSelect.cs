@@ -69,7 +69,7 @@ public class CharacterSelect : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         // handle per player selectsion 
 
@@ -104,7 +104,7 @@ public class CharacterSelect : MonoBehaviour
             if (gamepad.aButton.isPressed)
             {
                 SelectedCharacter[i] = CharacterGUIs[SelectedIndex];
-
+                PlayerImages[i].color = Color.green;
                 switch (i)
                 {
                     case 0:
