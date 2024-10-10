@@ -15,15 +15,16 @@ MonoBehaviour:
   playerName: TheOuppy
   maxSpeed: 30
   driftModifer: 4
-  acceleration: 1.7
+  acceleration: 1.5
   turnRaduis: 360
   turnRate: 60
   boostMultiplier: 1.4
   Object: {fileID: 0}
   rotastionOFObject: {x: 0, y: 0, z: 0, w: 0}
   posistionOfObject: {x: 0, y: 0, z: 0}
-  BoostSound: GetMeMoreFish
+  BoostSound: Bark_Small
   FirstPlaceSound: 
   LastPlaceSound: 
   hitSound: 
   tauntSound: GiveMeYourFish
+  CanBreak: 0
