@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8376262725684318450}
   m_Layer: 0
   m_Name: SplitScreenManager
-  m_TagString: Untagged
+  m_TagString: SplitScreen
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -44,6 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 044f20e205ed64a56a774de87ad45314, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  players: []
   playerToSpawn: {fileID: 3303934124489859916, guid: 55c6b48c4a8c34e07a8ed6df5066f2fb, type: 3}
   playerCameraRig: {fileID: 8670435409533123014, guid: aac0232e853a14815a75944921d510de, type: 3}
   spawnPoints:
@@ -52,3 +53,4 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   SpringArmOffset: {x: 0, y: 0, z: 0}
+  characters: {fileID: 0}

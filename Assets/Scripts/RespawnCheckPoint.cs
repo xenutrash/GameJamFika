@@ -20,4 +20,12 @@ public class RespawnCheckPoint : MonoBehaviour
         player.respawnPos = respawnPos;
 
     }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawSphere(respawnPos.position, 1);
+        Gizmos.color = Color.red;
+        Gizmos.DrawSphere(respawnPos.position + respawnPos.forward * 2, 0.5f);
+    }
 }

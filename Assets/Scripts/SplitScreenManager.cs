@@ -20,6 +20,7 @@ public class SplitScreenManager : MonoBehaviour
     [SerializeField]
     Characters characters;
 
+
     int index = 0; 
 
     private void Start()
@@ -141,6 +142,7 @@ public class SplitScreenManager : MonoBehaviour
         player.SetController(pad);
         player.attatchedCamera = camera;
         player.AllowMovement = false;
+        player.name = "Player" + (index +1);
         AddPlayer(player);
 
     }
