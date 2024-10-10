@@ -89,6 +89,7 @@ GameObject:
   - component: {fileID: 1963497960226155409}
   - component: {fileID: 1989571748494076253}
   - component: {fileID: 3154659743428263279}
+  - component: {fileID: 3108220342107467929}
   m_Layer: 5
   m_Name: CharacterButton
   m_TagString: Untagged
@@ -323,6 +324,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b847ca55f93d44c4fa653fd73ab80855, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &3108220342107467929
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4517893052138909346}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4832c1ce8e9cf40c29e2b816a66641b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CharacterImage: {fileID: 5161844589072269130}
+  CharacterText: {fileID: 2053051806559231073}
+  CharacterButton: {fileID: 7996421088732799989}
+  Frame: {fileID: 6014955900623844245}
+  Character:
+    CharacterPrefab: {fileID: 0}
+    NameOfCharacter: 
+    CharacterImage: {fileID: 0}
 --- !u!1 &7407458325730919015
 GameObject:
   m_ObjectHideFlags: 0
