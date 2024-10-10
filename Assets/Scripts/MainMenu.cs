@@ -5,11 +5,13 @@ using UnityEngine.InputSystem;
 public class MainMenu : MonoBehaviour {
     // [SerializeField] AudioClip[] soundClips;
     // [SerializeField] AudioSource audioSource;
+
     public Button defaultButton;
     public Button[] playerButtons;
     public GameObject selectMenu;
-    public GameObject mainMenu; 
-   
+    public GameObject mainMenu;
+
+  
     public void PlayGame() {
 
         
@@ -46,6 +48,7 @@ public class MainMenu : MonoBehaviour {
         {
             playerButtons[i].enabled = false;
         }
+    
         selectMenu.SetActive(false);
         mainMenu.SetActive(true);
        
@@ -69,8 +72,6 @@ public class MainMenu : MonoBehaviour {
                 break; 
         }
         
-        
-
     }
 
 
@@ -83,7 +84,9 @@ public class MainMenu : MonoBehaviour {
     }
 
     public void QuitGame() {
+#if !UNITY_EDITOR
         Application.Quit();
+#endif
         Debug.Log("Quit"); //Added this message bcs this wont work in unity
     }
 
