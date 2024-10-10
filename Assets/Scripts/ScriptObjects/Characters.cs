@@ -10,6 +10,7 @@ public class Characters : ScriptableObject
 
     public GameObject GetPrefab(string Name)
     {
+        if (Name == "") return defaultCharacter; 
         foreach (var CharContainer in characterContainers)
         {
             if (CharContainer.NameOfCharacter == Name)

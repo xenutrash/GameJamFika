@@ -17,6 +17,8 @@ public class SplitScreenManager : MonoBehaviour
     GameObject[] spawnPoints;
     public Vector3 SpringArmOffset; 
     GameManager gameManager;
+    [SerializeField]
+    Characters characters;
 
     int index = 0; 
 
@@ -95,9 +97,28 @@ public class SplitScreenManager : MonoBehaviour
         {
             pad = Gamepad.all[index];
         }
-        
 
-        GameObject spawnedPlayer = Instantiate<GameObject>(playerToSpawn);
+        GameObject prefabToSpawn = characters.defaultCharacter;
+        switch (index)
+        {
+            case 0:
+                prefabToSpawn = characters.GetPrefab(CrossSceneContainer.Player1SelectedCharacter);
+                break;
+            case 1:
+                prefabToSpawn = characters.GetPrefab(CrossSceneContainer.Player2SelectedCharacter);
+                break;
+            case 2:
+                prefabToSpawn = characters.GetPrefab(CrossSceneContainer.Player3SelectedCharacter);
+                break;
+            case 3:
+                prefabToSpawn = characters.GetPrefab(CrossSceneContainer.Player4SelectedCharacter);
+                break;
+            default:
+                break;
+
+        }
+
+        GameObject spawnedPlayer = Instantiate<GameObject>(prefabToSpawn);
         spawnedPlayer.transform.SetPositionAndRotation(pos, rotastion);
         Player player = spawnedPlayer.GetComponent<Player>();
 

@@ -4482,6 +4482,10 @@ PrefabInstance:
       value: SplitScreenManager
       objectReference: {fileID: 0}
     - target: {fileID: 8376262725684318450, guid: f6d1480e18c81469d956d348dbe09dcf, type: 3}
+      propertyPath: characters
+      value: 
+      objectReference: {fileID: 11400000, guid: 3883889db483e4273b688b8176c2f471, type: 2}
+    - target: {fileID: 8376262725684318450, guid: f6d1480e18c81469d956d348dbe09dcf, type: 3}
       propertyPath: playerToSpawn
       value: 
       objectReference: {fileID: 3303934124489859916, guid: 94c7abd5b8647466daad08d9f5b80a71, type: 3}
