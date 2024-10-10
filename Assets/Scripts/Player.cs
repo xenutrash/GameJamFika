@@ -132,12 +132,12 @@ public class Player : MonoBehaviour
                 }
             }
 
-            if (controller.aButton.IsPressed())
+            if (controller.rightTrigger.IsPressed())
             {
-                StartDrifting(); 
+                isDrifting = true;
             }else 
             {
-                StopDrifting(); 
+                isDrifting = false;
             }
 
             return; 
@@ -146,11 +146,11 @@ public class Player : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.K))
         {
-            StartDrifting();
+            isDrifting = true;
         }
         if((Input.GetKeyUp(KeyCode.K)))
         {
-            StopDrifting();
+            isDrifting = false;
         }
     }
 
@@ -191,22 +191,6 @@ public class Player : MonoBehaviour
     }
 
 
-    void StartDrifting()
-    {
-        if (!isDrifting)
-        {
-            isDrifting = true;
-        }
-    }
-
-    void StopDrifting()
-    {
-        if (isDrifting)
-        {
-            isDrifting = false;
-
-        }
-    }
 
     public void SetSpeedBoost(float speedBoost, bool apply = true)
     {
