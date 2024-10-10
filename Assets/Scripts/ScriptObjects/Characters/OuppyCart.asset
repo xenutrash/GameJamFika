@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: OuppyCart
   m_EditorClassIdentifier: 
   playerName: TheOuppy
-  maxSpeed: 25
+  maxSpeed: 23
   driftModifer: 4
   acceleration: 1.5
   turnRaduis: 360
   turnRate: 60
-  boostMultiplier: 1.4
+  boostMultiplier: 1.2
   Object: {fileID: 0}
   rotastionOFObject: {x: 0, y: 0, z: 0, w: 0}
   posistionOfObject: {x: 0, y: 0, z: 0}

@@ -9,16 +9,20 @@ public class Player : MonoBehaviour
     public bool AllowMovement { get; set; } = false;
     private Rigidbody rb;
     public Camera attatchedCamera;
-    Gamepad controller; 
+    Gamepad controller;
+
+    public Transform respawnPos = null;
 
     private float speedBoost = 0;
     private bool isDrifting = false;
     private float originalTurnRate;
     public Animator animator;
 
-    public Transform respawnPos = null; 
+    bool Taunting = false;
 
-    bool Taunting = false; 
+    public float driftFactor = 0.9f;
+    public float driftDrag = 2f;
+    public float normalDrag = 0.05f;
 
     // Start is called before the first frame update
     void Start()
@@ -42,7 +46,23 @@ public class Player : MonoBehaviour
 
         float turn = controller == null ? GetKeyboardInput() : GetControllerInput();
 
-        if (!isDrifting)
+        if (isDrifting)
+        {
+            ReduceDriftSpeed();
+            if (Input.GetKey(KeyCode.D) || controller.leftStick.value.x > 0.1)
+            {
+                Vector3 driftForce = -transform.right * rb.velocity.magnitude * driftFactor;
+                driftForce.y = 0;
+                rb.AddForce(driftForce, ForceMode.Acceleration);
+            }
+            else if (Input.GetKey(KeyCode.A) || controller.leftStick.value.x < -0.1)
+            {
+                Vector3 driftForce = transform.right * rb.velocity.magnitude * driftFactor;
+                driftForce.y = 0;
+                rb.AddForce(driftForce, ForceMode.Acceleration);
+            }
+        }
+        else
         {
             if ((Input.GetKey(KeyCode.W) || IsAButtonPressed()))
             {
@@ -53,9 +73,8 @@ public class Player : MonoBehaviour
             {
                 DeAccelerate();
             }
-            
-            
         }
+
 
         Vector3 vel = transform.forward * currentSpeed;
         vel.y = rb.velocity.y;
@@ -64,50 +83,50 @@ public class Player : MonoBehaviour
         transform.eulerAngles = new Vector3(
             transform.eulerAngles.x,
             turn,
-            transform.eulerAngles.z
-        );
+            transform.eulerAngles.z);
 
-    
 
-        if(controller != null)
+
+        if (controller != null)
         {
+            if (controller.rightTrigger.isPressed)
+            {
+                isDrifting = true;
+            }
+            else
+            {
+                isDrifting = false;
+            }
+
             if (controller.yButton.isPressed && !Taunting)
             {
                 PlayTaunt();
-                Taunting = true; 
+                Taunting = true;
             }
-            else if(!controller.yButton.isPressed)
+            else if (!controller.yButton.isPressed)
             {
                 Taunting = false;
             }
 
             if (controller.startButton.isPressed)
             {
-                Pause(); 
+                Pause();
             }
 
-            if (controller.aButton.IsPressed())
-            {
-                StartDrifting(); 
-            }else 
-            {
-                StopDrifting(); 
-            }
-
-            return; 
+            return;
         }
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            Pause(); 
+            Pause();
         }
 
         if (Input.GetKeyDown(KeyCode.K))
         {
-            StartDrifting();
+            isDrifting = true;
         }
-        if((Input.GetKeyUp(KeyCode.K)))
+        if ((Input.GetKeyUp(KeyCode.K)))
         {
-            StopDrifting();
+            isDrifting = false;
         }
     }
 
@@ -132,42 +151,19 @@ public class Player : MonoBehaviour
     {
         float turn = transform.eulerAngles.y;
 
-        if(controller.leftStick.value.x > 0.1)
+        if (controller.leftStick.value.x > 0.1)
         {
             turn += (Stats.turnRate * Time.deltaTime * controller.leftStick.value.x);
         }
 
         if (controller.leftStick.value.x < -0.1)
         {
-            turn -= (Stats.turnRate * Time.deltaTime * controller.leftStick.value.x *-1);
+            turn -= (Stats.turnRate * Time.deltaTime * controller.leftStick.value.x * -1);
         }
 
-        return turn; 
+        return turn;
     }
 
-
-    void StartDrifting()
-    {
-        if (!isDrifting)
-        {
-            isDrifting = true;
-            Stats.turnRate *= 2f;
-            currentSpeed *= 0.9f;
-
-            rb.drag *= 0.5f; 
-        }
-    }
-
-    void StopDrifting()
-    {
-        if (isDrifting)
-        {
-            isDrifting = false;
-            Stats.turnRate = originalTurnRate;
-            rb.drag = 3.0f;
-
-        }
-    }
 
     public void SetSpeedBoost(float speedBoost, bool apply = true)
     {
@@ -177,46 +173,46 @@ public class Player : MonoBehaviour
             return;
         }
         // prevents boosts from being multipiled 
-        if(this.speedBoost != 0)
+        if (this.speedBoost != 0)
         {
-            return; 
+            return;
         }
 
         PlayAudioOneShoot(Stats.BoostSound);
-        if(animator != null)
+        if (animator != null)
         {
             animator.SetTrigger("boost");
         }
-        
+
         Debug.Log("SpeedBoost yay");
         this.speedBoost = speedBoost * Stats.boostMultiplier;
-        
+
     }
 
     public void SetController(Gamepad pad)
     {
-        controller = pad; 
+        controller = pad;
     }
 
     public void PlayAudioOneShoot(string audioToPlay)
     {
-        if(AudioManager.instance == null)
+        if (AudioManager.instance == null)
         {
-            Debug.Log("No audio manager in scene"); 
-            return; 
+            Debug.Log("No audio manager in scene");
+            return;
         }
-        Debug.Log("Trying to play sound now"); 
-        AudioManager.instance.PlayOneShot(audioToPlay); 
+        Debug.Log("Trying to play sound now");
+        AudioManager.instance.PlayOneShot(audioToPlay);
     }
 
     private void PlayTaunt()
     {
         PlayAudioOneShoot(Stats.tauntSound);
-        if(animator != null)
+        if (animator != null)
         {
-          animator.SetTrigger("boost");
+            animator.SetTrigger("boost");
         }
-        
+
 
 
     }
@@ -224,7 +220,7 @@ public class Player : MonoBehaviour
     private bool IsAButtonPressed()
     {
         if (controller == null) return false;
-        return controller.aButton.IsPressed(); 
+        return controller.aButton.IsPressed();
     }
 
     private bool IsBButtonPressed()
@@ -249,13 +245,19 @@ public class Player : MonoBehaviour
 
     private void DeAccelerate()
     {
-     
-      currentSpeed = Mathf.Lerp(currentSpeed, 0, Stats.acceleration * Time.deltaTime);
-        
+
+        currentSpeed = Mathf.Lerp(currentSpeed, 0, Stats.acceleration * Time.deltaTime);
+
+    }
+
+    private void ReduceDriftSpeed()
+    {
+        currentSpeed = Mathf.Lerp(currentSpeed, (Stats.maxSpeed + speedBoost) * 0.7f, Stats.acceleration * Time.deltaTime);
     }
 
 
-    private void Pause() {
+    private void Pause()
+    {
 
         if (PauseMenu.GetInstance() != null)
         {
@@ -267,16 +269,17 @@ public class Player : MonoBehaviour
                 AudioManager.instance.Pause();
             }
         }
-
     }
 
-    public void Repspawn()
-    {
-        // resets vel
-        rb.velocity = Vector3.zero;
-        transform.SetPositionAndRotation(respawnPos.position, respawnPos.rotation);
-        PlayAudioOneShoot(Stats.LastPlaceSound);
-        currentSpeed = 0; 
-    }
+        public void Repspawn()
+        {
+            // resets vel
+            rb.velocity = Vector3.zero;
+            transform.SetPositionAndRotation(respawnPos.position, respawnPos.rotation);
+            PlayAudioOneShoot(Stats.LastPlaceSound);
+            currentSpeed = 0;
+        }
+
+    
 
 }
