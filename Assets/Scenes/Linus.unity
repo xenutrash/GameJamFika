@@ -659,6 +659,10 @@ MonoBehaviour:
   splineIndex: 0
   t: 0.8158007
   speed: 0.08
+  distance: 5
+  height: 2
+  lookAheadDistance: 5
+  smoothSpeed: 0.125
 --- !u!4 &198716490
 Transform:
   m_ObjectHideFlags: 0
@@ -6062,6 +6066,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5959696989539819530, guid: cf56fb9a3e242402882a59f53699f0d4, type: 3}
+      propertyPath: sounds.Array.data[4].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 5799874643a6d7a488d55ff9cbf740c6, type: 3}
     - target: {fileID: 6037302013769482478, guid: cf56fb9a3e242402882a59f53699f0d4, type: 3}
       propertyPath: m_Name
       value: AudioManager
