@@ -276,6 +276,7 @@ public class Player : MonoBehaviour
         rb.velocity = Vector3.zero;
         transform.SetPositionAndRotation(respawnPos.position, respawnPos.rotation);
         PlayAudioOneShoot(Stats.LastPlaceSound);
+        currentSpeed = 0; 
     }
 
 }
