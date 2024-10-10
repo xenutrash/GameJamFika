@@ -20,7 +20,12 @@ public class CharacterSelect : MonoBehaviour
     private List<CharacterGUI> SelectedCharacter = new(); 
 
 
-    private int PlayerInGame = 0; 
+    private int PlayerInGame = 0;
+
+    float Acumulator = 0;
+    float TimeBeforeActAgain = 0.1f; 
+
+
 
     public void StartWithPlayers(int PlayerToStartWith)
     {
@@ -69,24 +74,25 @@ public class CharacterSelect : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         // handle per player selectsion 
-
+        Acumulator += Time.deltaTime;
         for(int i = 0; i < PlayerInGame; i++)
         {
             if (Gamepad.all.Count <= i) break; 
             Gamepad gamepad = Gamepad.all[i];
             int SelectedIndex = PlayerSelectedIndex[i];
+            
 
             //Moving left
-            if(gamepad.leftStick.value.x >= 0.87)
+            if(gamepad.leftStick.value.x >= 0.87 &&  Acumulator >= TimeBeforeActAgain)
             {
               SelectedIndex++; 
             }
 
             // moving right
-            if (gamepad.leftStick.value.x <= -0.87)
+            if (gamepad.leftStick.value.x <= -0.87 && Acumulator >= TimeBeforeActAgain)
             {
                 SelectedIndex--; 
             }
@@ -104,7 +110,7 @@ public class CharacterSelect : MonoBehaviour
             if (gamepad.aButton.isPressed)
             {
                 SelectedCharacter[i] = CharacterGUIs[SelectedIndex];
-
+                PlayerImages[i].color = Color.green;
                 switch (i)
                 {
                     case 0:
@@ -132,6 +138,10 @@ public class CharacterSelect : MonoBehaviour
                
             }
 
+            if(Acumulator >= TimeBeforeActAgain)
+            {
+                Acumulator = 0; 
+            }
 
             if (SelectedIndex == PlayerSelectedIndex[i]) continue;
             Debug.Log(PlayerImages.Count);
