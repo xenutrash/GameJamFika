@@ -1,15 +1,15 @@
-
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEditor.Experimental.GraphView.GraphView;
 
-[RequireComponent(typeof(CapsuleCollider))]
 public class Twister : MonoBehaviour
 {
     public float respawnTime;
 
-    bool activated = false;
-    float acumulater;
+    public ParticleSystem p1, p2;
+
+    public bool activated = false;
+    public bool swapExecuted = false; // Flag to prevent double swapping
+    public float acumulater;
     public CapsuleCollider col;
     public MeshRenderer meshRenderer;
     GameObject player;
@@ -19,56 +19,79 @@ public class Twister : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if(col == null)
-        {
-            col = GetComponent<CapsuleCollider>(); 
-        }
-        if(meshRenderer == null)
-        {
-            meshRenderer = GetComponent<MeshRenderer>(); 
-        }
-       confetti = GetComponentInChildren<ParticleSystem>();
+        acumulater = respawnTime;
 
+        if (col == null)
+        {
+            col = GetComponent<CapsuleCollider>();
+        }
+        if (meshRenderer == null)
+        {
+            meshRenderer = GetComponent<MeshRenderer>();
+        }
+        confetti = GetComponentInChildren<ParticleSystem>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (!activated)
+        if (!meshRenderer.enabled)
         {
-            return; 
+            acumulater += Time.deltaTime;
         }
 
-        if (activated)
-        {
-            GameObject otherPlayer = GetRandomPlayer(player);
-
-            if (otherPlayer == null)
-            {
-                activated = false;
-                return;
-            }
-
-            Vector3 other = otherPlayer.transform.position;
-            Vector3 here = player.transform.position;
-
-            if (other != null && here != null)
-            {
-                player.transform.position = other;
-                otherPlayer.transform.position = here;
-                
-                activated = false;
-            }
-        }
-
-        acumulater += Time.deltaTime;
-
+        // Respawn the Twister object after cooldown
         if (acumulater > respawnTime)
         {
             Debug.Log("Respawned");
             col.enabled = true;
+            meshRenderer.enabled = true;
+            swapExecuted = false; // Reset swap flag when respawned
+            activated = false;
             acumulater = 0;
-            meshRenderer.enabled = true; 
+            return;
+        }
+
+        // Swap logic only runs when activated and the swap hasn't been executed
+        if (!activated || swapExecuted)
+        {
+            return;
+        }
+
+        if (activated && !swapExecuted) // Ensure it only swaps once
+        {
+            SwapPlayers();
+        }
+    }
+
+    void SwapPlayers()
+    {
+        GameObject otherPlayer = GetRandomPlayer(player);
+
+        if (otherPlayer == null)
+        {
+            activated = false;
+            return;
+        }
+
+        Vector3 otherPosition = otherPlayer.transform.position;
+        Vector3 playerPosition = player.transform.position;
+
+        if (otherPosition != null && playerPosition != null)
+        {
+            // Swap positions
+            player.transform.position = otherPosition;
+            otherPlayer.transform.position = playerPosition;
+
+            // Play particle systems at the swap positions
+            p1.transform.position = playerPosition;
+            p2.transform.position = otherPosition;
+
+            p1.Play();
+            p2.Play();
+
+            swapExecuted = true; // Mark the swap as done
+            activated = false; // Reset activation flag
         }
     }
 
@@ -113,10 +136,13 @@ public class Twister : MonoBehaviour
             return;
         }
 
-        player = collision.gameObject;
-        activated = true;
-        col.enabled = false;
-        meshRenderer.enabled = false;
+        if (collision.gameObject.tag.Contains("Player"))
+        {
+            player = collision.gameObject;
+            activated = true;
+            col.enabled = false;
+            meshRenderer.enabled = false;
+        }
 
         try
         {
