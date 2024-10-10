@@ -80,7 +80,9 @@ public class Twister : MonoBehaviour
         if (otherPosition != null && playerPosition != null)
         {
             // Swap positions
+            player.gameObject.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
             player.transform.position = otherPosition;
+            otherPlayer.gameObject.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
             otherPlayer.transform.position = playerPosition;
 
             // Play particle systems at the swap positions
