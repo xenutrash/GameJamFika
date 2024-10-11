@@ -118,6 +118,18 @@ MonoBehaviour:
     pitch: 1
     loop: 0
     source: {fileID: 0}
+  - name: CupJoe_Boost
+    clip: {fileID: 8300000, guid: 6c6f0657da6a38842ba17ca1ebc8b71b, type: 3}
+    volume: 1.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: CupJoe_Taunt
+    clip: {fileID: 8300000, guid: f30bc16f3bf6213478b95b079a2d4d2c, type: 3}
+    volume: 1.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
 --- !u!82 &8063402671804821931
 AudioSource:
   m_ObjectHideFlags: 0
