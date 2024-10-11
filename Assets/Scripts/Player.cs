@@ -20,11 +20,14 @@ public class Player : MonoBehaviour
 
     bool Taunting = false;
 
-    public float driftFactor = 0.9f;
     public float driftDrag = 2f;
     public float normalDrag = 0.05f;
 
-    public PlayerHUDScript hud; 
+    public PlayerHUDScript hud;
+
+    public SpringArm springArm;
+
+    private int laps = 1;
 
     public string name;
 
@@ -55,15 +58,15 @@ public class Player : MonoBehaviour
             ReduceDriftSpeed();
             if (Input.GetKey(KeyCode.D) || controller.leftStick.value.x > 0.1)
             {
-                Vector3 driftForce = -transform.right * rb.velocity.magnitude * driftFactor;
+                Vector3 driftForce = -transform.right * rb.velocity.magnitude * Stats.driftModifer;
                 driftForce.y = 0;
-                rb.AddForce(driftForce, ForceMode.Acceleration);
+                rb.AddForce(driftForce * Time.deltaTime, ForceMode.Acceleration);
             }
             else if (Input.GetKey(KeyCode.A) || controller.leftStick.value.x < -0.1)
             {
-                Vector3 driftForce = transform.right * rb.velocity.magnitude * driftFactor;
+                Vector3 driftForce = transform.right * rb.velocity.magnitude * Stats.driftModifer;
                 driftForce.y = 0;
-                rb.AddForce(driftForce, ForceMode.Acceleration);
+                rb.AddForce(driftForce *Time.deltaTime, ForceMode.Acceleration);
             }
         }
         else
@@ -286,6 +289,20 @@ public class Player : MonoBehaviour
             currentSpeed = 0;
         }
 
-    
+    public void IncreaseLaps(int totalLaps)
+    {
+        laps++;
+        hud.SetLapText(laps.ToString() + "/" + totalLaps.ToString());
+    }
+
+    public int GetLaps()
+    {
+        return laps;
+    }
+
+    public void EndGame(string winner)
+    {
+        hud.WinnerPlayer(winner);
+    }
 
 }

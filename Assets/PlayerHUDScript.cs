@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerHUDScript : MonoBehaviour
 {
@@ -11,10 +12,29 @@ public class PlayerHUDScript : MonoBehaviour
 
     [SerializeField]
     TextMeshProUGUI LapText;
-    
 
     [SerializeField]
-    Canvas canvas; 
+    TextMeshProUGUI WinnerText;
+
+    [SerializeField]
+    TextMeshProUGUI WinnerPlayerText;
+
+    [SerializeField]
+    Image WinnerImage; 
+
+
+    [SerializeField]
+    Canvas canvas;
+
+    [SerializeField]
+    GameObject PosObject;
+
+
+    [SerializeField]
+    GameObject SpeedObject;
+
+    [SerializeField]
+    GameObject LapObject;
 
     public void SetLapText(string TextToSet)
     {
@@ -64,7 +84,38 @@ public class PlayerHUDScript : MonoBehaviour
         canvas.renderMode = RenderMode.ScreenSpaceCamera;
         canvas.worldCamera = camera;
         canvas.planeDistance = 1; 
+    }
+
+    public void WinnerPlayer(string TextToSet)
+    {
+        /*
+        WinnerPlayerText.gameObject.SetActive(true);
+        WinnerPlayerText.text = TextToSet;
+        */
+
+        WinnerImage.gameObject.SetActive(true);
+        
+        WinnerText.gameObject.SetActive(true);
+        WinnerText.text = "Finished at pos: 1";
+
+        LapObject.SetActive(false);
+        SpeedObject.SetActive(false);
+        PosObject.SetActive(false);
+    }
+
+
+    public void SetFinishedText(string pos)
+    {
+        WinnerText.gameObject.SetActive(true);
+        WinnerText.text = "Finished at pos: " + pos;
+
+        LapObject.SetActive(false);
+        SpeedObject.SetActive(false);
+        PosObject.SetActive(false);
+
 
     }
+
+
 
 }

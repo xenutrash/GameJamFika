@@ -13,6 +13,7 @@ public class MusicCheck : MonoBehaviour
         {
             if (AudioManager.instance.GetMusic() == musicClip) return;
             AudioManager.instance.Play(MusicToPlay);
+            Debug.Log("Updated the playing song"); 
         }
 
 
