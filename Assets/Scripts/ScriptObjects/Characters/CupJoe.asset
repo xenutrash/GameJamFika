@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerName: CupJoe
   maxSpeed: 26
-  driftModifer: 3
+  driftModifer: 1000
   acceleration: 1.7
   turnRaduis: 360
   turnRate: 60
