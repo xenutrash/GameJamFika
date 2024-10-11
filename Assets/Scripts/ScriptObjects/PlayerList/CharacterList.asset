@@ -13,18 +13,24 @@ MonoBehaviour:
   m_Name: CharacterList
   m_EditorClassIdentifier: 
   characterContainers:
-  - CharacterPrefab: {fileID: 3303934124489859916, guid: 94c7abd5b8647466daad08d9f5b80a71, type: 3}
-    NameOfCharacter: Ouppy
-    CharacterImage: {fileID: 21300000, guid: 20beed5dc85824ba39822284355c1fc5, type: 3}
   - CharacterPrefab: {fileID: 3303934124489859916, guid: 55c6b48c4a8c34e07a8ed6df5066f2fb, type: 3}
     NameOfCharacter: Buff David Jr
     CharacterImage: {fileID: 21300000, guid: 68774816ae46647e0b89e97614cb5f2a, type: 3}
+  - CharacterPrefab: {fileID: 3303934124489859916, guid: cef65108b92aeda4cb914d4592cd8529, type: 3}
+    NameOfCharacter: Emma Jr
+    CharacterImage: {fileID: 21300000, guid: 4f833405ba77340e29edc0761d8cb387, type: 3}
+  - CharacterPrefab: {fileID: 3303934124489859916, guid: b52d8c337f6ae418eae6f2a923e33a8a, type: 3}
+    NameOfCharacter: AweJr
+    CharacterImage: {fileID: 21300000, guid: e41c52c22c85c4675a9a022f18274d55, type: 3}
   - CharacterPrefab: {fileID: 1750527005617442404, guid: b01e21d1f22914627998311aecef8379, type: 3}
     NameOfCharacter: CupJoe
     CharacterImage: {fileID: 21300000, guid: f6aa7ebd784d14abc97f34b00cc46176, type: 3}
-  - CharacterPrefab: {fileID: 1750527005617442404, guid: b01e21d1f22914627998311aecef8379, type: 3}
-    NameOfCharacter: CupJoe
-    CharacterImage: {fileID: 21300000, guid: f6aa7ebd784d14abc97f34b00cc46176, type: 3}
+  - CharacterPrefab: {fileID: 3303934124489859916, guid: 94c7abd5b8647466daad08d9f5b80a71, type: 3}
+    NameOfCharacter: Ouppy
+    CharacterImage: {fileID: 21300000, guid: 20beed5dc85824ba39822284355c1fc5, type: 3}
+  - CharacterPrefab: {fileID: 3303934124489859916, guid: 8173e93b2b76b44f2a780562012fc2b4, type: 3}
+    NameOfCharacter: David jr
+    CharacterImage: {fileID: 21300000, guid: f23e77ae532734d27860d3234b6ba95e, type: 3}
   - CharacterPrefab: {fileID: 3303934124489859916, guid: b886996e9e40e0844a3e6ea6ce3abb53, type: 3}
     NameOfCharacter: Star
     CharacterImage: {fileID: 21300000, guid: 33cf9a6cb73ac8347b220ec711a9f93b, type: 3}
