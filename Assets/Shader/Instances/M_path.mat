@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: M_Path
+  m_Name: M_path
   m_Shader: {fileID: -6465566751694194690, guid: a86ca1dde9d58974c880c7a06d1881c2, type: 3}
   m_Parent: {fileID: -876546973899608171, guid: a86ca1dde9d58974c880c7a06d1881c2, type: 3}
   m_ModifiedSerializedProperties: 0
