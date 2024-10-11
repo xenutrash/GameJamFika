@@ -50,13 +50,19 @@ VisualEffect:
   m_ResourceVersion: 1
   m_PropertySheet:
     m_Float:
-      m_Array: []
+      m_Array:
+      - m_Value: 3
+        m_Name: Brightness
+        m_Overridden: 1
     m_Vector2f:
       m_Array: []
     m_Vector3f:
       m_Array: []
     m_Vector4f:
-      m_Array: []
+      m_Array:
+      - m_Value: {x: 0.735849, y: 0.735849, z: 0.735849, w: 1}
+        m_Name: Base Color
+        m_Overridden: 1
     m_Uint:
       m_Array: []
     m_Int:
@@ -253,6 +259,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6567042490061038672, guid: 05ac41738c6244ff78f6b5fe8d830d25, type: 3}
       insertIndex: -1
       addedObject: {fileID: 8830808833382607653}
+    - targetCorrespondingSourceObject: {fileID: 6567042490061038672, guid: 05ac41738c6244ff78f6b5fe8d830d25, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2022338503575060972}
   m_SourcePrefab: {fileID: 100100000, guid: 05ac41738c6244ff78f6b5fe8d830d25, type: 3}
 --- !u!1 &3303934124489859916 stripped
 GameObject:
@@ -303,6 +312,19 @@ MonoBehaviour:
   backOffset: {x: 0, y: 0, z: -2.16}
   leftOffset: {x: -1.45, y: 0, z: 0}
   rightOffset: {x: 1.48, y: 0, z: 0}
+--- !u!114 &2022338503575060972
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3303934124489859916}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 695339e1c25f13e4ebbcce80635086df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  driftColor: {r: 0.73333335, g: 0.3372549, b: 0.10980392, a: 1}
 --- !u!4 &6870072853617236318 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3002874082281037378, guid: 05ac41738c6244ff78f6b5fe8d830d25, type: 3}

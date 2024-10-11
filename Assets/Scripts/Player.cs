@@ -14,7 +14,7 @@ public class Player : MonoBehaviour
     public Transform respawnPos = null;
 
     private float speedBoost = 0;
-    private bool isDrifting = false;
+    public bool isDrifting = false;
     private float originalTurnRate;
     public Animator animator;
 
