@@ -80,13 +80,13 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 9006cf75461601e44ba03cef69cd7a00, type: 3}
     volume: 1.5
     pitch: 1
-    loop: 0
+    loop: 1
     source: {fileID: 0}
   - name: Menu_Music
     clip: {fileID: 8300000, guid: 802d489dbe3477a46962f8c558adaf83, type: 3}
     volume: 1.5
     pitch: 1
-    loop: 0
+    loop: 1
     source: {fileID: 0}
   - name: EndGame_Music
     clip: {fileID: 8300000, guid: 8c43bcf5ca1c441eeb7a9e105ae71fe3, type: 3}
@@ -102,6 +102,30 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: Man_Wow
     clip: {fileID: 8300000, guid: 5c1b6b9b8591d96439b819002a553607, type: 3}
+    volume: 1.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Star_Boost
+    clip: {fileID: 8300000, guid: 8fcb47bfa6d22fa4ab430f22ad846397, type: 3}
+    volume: 1.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Star_Taunt
+    clip: {fileID: 8300000, guid: 7c35a182eeb13a34a8557eaef857ef88, type: 3}
+    volume: 1.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: CupJoe_Boost
+    clip: {fileID: 8300000, guid: 6c6f0657da6a38842ba17ca1ebc8b71b, type: 3}
+    volume: 1.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: CupJoe_Taunt
+    clip: {fileID: 8300000, guid: f30bc16f3bf6213478b95b079a2d4d2c, type: 3}
     volume: 1.5
     pitch: 1
     loop: 0
