@@ -59,19 +59,33 @@ public class FinishLine : MonoBehaviour
     {
         if (player.GetLaps() > totalLaps)
         {
-            if(MadeItPassTheLine.Count < 1)
+            MadeItPassTheLine.Add(player);
+            if (MadeItPassTheLine.Count <= 1)
             {
                 player.hud.WinnerPlayer("f");
             }
-            MadeItPassTheLine.Add(player);
-            player.hud.SetFinishedText((MadeItPassTheLine.
-                     Count).ToString());
+            else
+            {
+                player.hud.SetFinishedText((MadeItPassTheLine.
+                    Count).ToString());
+            }
+            
+
 
         }
         
         if(MadeItPassTheLine.Count >= CrossSceneContainer.PlayersInGame)
         {
             EndRace(MadeItPassTheLine[0]);
+            for (int i = 1; i < MadeItPassTheLine.Count; i++)
+            {
+                SpringArm arm = MadeItPassTheLine[i].springArm;
+                arm.target = MadeItPassTheLine[0].transform;
+                arm.useControlRotation = false;
+
+                arm.socketOffset = new Vector3(0, 1, -4);
+                arm.transform.rotation = Quaternion.Euler(12, 4, 0);
+            }
         }
     }
 

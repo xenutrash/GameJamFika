@@ -10,21 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: df22689c85e7545f49ed13ef75bd524e, type: 3}
-  m_Name: Emma Jr
+  m_Name: David Jr
   m_EditorClassIdentifier: 
-  playerName: CupJoe
-  maxSpeed: 26
-  driftModifer: 1000
-  acceleration: 1.7
+  playerName: 'david jr '
+  maxSpeed: 27
+  driftModifer: 1200
+  acceleration: 1.5
   turnRaduis: 360
-  turnRate: 60
-  boostMultiplier: 1.2
+  turnRate: 55
+  boostMultiplier: 1.5
   Object: {fileID: 0}
   rotastionOFObject: {x: 0, y: 0, z: 0, w: 0}
   posistionOfObject: {x: 0, y: 0, z: 0}
-  BoostSound: EmmaJr_Boost
+  BoostSound: GetMeMoreFish
   FirstPlaceSound: 
   LastPlaceSound: 
   hitSound: 
-  tauntSound: EmmaJr_Taunt
+  tauntSound: GiveMeYourFish
   CanBreak: 0

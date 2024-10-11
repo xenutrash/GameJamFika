@@ -136,6 +136,30 @@ MonoBehaviour:
     pitch: 1
     loop: 0
     source: {fileID: 0}
+  - name: EmmaJr_Boost
+    clip: {fileID: 8300000, guid: 24e71538ed0bb814e98fd4550ba7a250, type: 3}
+    volume: 1.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: EmmaJr_Taunt
+    clip: {fileID: 8300000, guid: e3f5b88e72da28542ab2d9dfed9a4b87, type: 3}
+    volume: 1.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: AweJr_Boost
+    clip: {fileID: 8300000, guid: c8513e3ac092f1d419ee4ad7dee9b84a, type: 3}
+    volume: 1.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: AweJr_Taunt
+    clip: {fileID: 8300000, guid: dbacf4c78767f3f40b57c25c19c91565, type: 3}
+    volume: 1.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
 --- !u!82 &8063402671804821931
 AudioSource:
   m_ObjectHideFlags: 0
