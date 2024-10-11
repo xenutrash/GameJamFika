@@ -22,9 +22,9 @@ MonoBehaviour:
   Object: {fileID: 0}
   rotastionOFObject: {x: 0, y: 0, z: 0, w: 0}
   posistionOfObject: {x: 0, y: 0, z: 0}
-  BoostSound: Man_Yeah
+  BoostSound: BuffJr_Boost
   FirstPlaceSound: 
   LastPlaceSound: 
   hitSound: 
-  tauntSound: Man_Wow
+  tauntSound: BuffJr_Taunt
   CanBreak: 0
