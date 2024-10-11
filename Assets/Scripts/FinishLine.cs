@@ -10,7 +10,9 @@ public class FinishLine : MonoBehaviour
 
     public List<GameObject> players;
 
-    public List<Player> MadeItPassTheLine = new(); 
+    public List<Player> MadeItPassTheLine = new();
+
+    public string FinishLineMusic = "EndGame_Music";
 
     private void OnTriggerEnter(Collider other)
     {
@@ -48,6 +50,39 @@ public class FinishLine : MonoBehaviour
         GameObject[] objectsWithTag = GameObject.FindGameObjectsWithTag("Player");
         players.AddRange(objectsWithTag);
 
+        int index = 0; 
+        foreach(var play in MadeItPassTheLine)
+        {
+            if(index == 0)
+            {
+                play.hud.WinnerPlayer("f");
+                continue; 
+            }
+
+            play.hud.SetPosText(index.ToString());
+
+            //play.EndGame(player.name);
+
+            SpringArm arm = play.springArm;
+            arm.target = player.transform;
+            arm.useControlRotation = false;
+
+            arm.socketOffset = new Vector3(0, 1, -4);
+            arm.transform.rotation = Quaternion.Euler(12, 4, 0);
+
+            index++; 
+        }
+
+        if(AudioManager.instance == null)
+        {
+            return; 
+        }
+
+        AudioManager.instance.Play(FinishLineMusic);
+
+        /*
+        
+
         for (int i = 0; i < players.Count; i++)
         {
 
@@ -55,6 +90,7 @@ public class FinishLine : MonoBehaviour
 
             if (playerCompare != player)
             {
+               
                 playerCompare.EndGame(player.name);
 
                 SpringArm arm = playerCompare.springArm;
@@ -66,6 +102,7 @@ public class FinishLine : MonoBehaviour
             }
            
         }
+        */
 
     }
 }
