@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;  // For scene management or restarting the game
 
@@ -14,6 +15,12 @@ public class FinishLine : MonoBehaviour
 
     public string FinishLineMusic = "EndGame_Music";
 
+    public float TimeToWaitBeforeEndGame = 10;
+
+    bool GameEnded = false;
+
+    float Acumelater = 0;
+
     private void OnTriggerEnter(Collider other)
     {
         if (gameIsActive)
@@ -28,6 +35,23 @@ public class FinishLine : MonoBehaviour
                 CheckIfWinner(playerScript);
             }
         }
+    }
+
+    void Update()
+    {
+        if (!GameEnded) return;
+
+        Acumelater += Time.deltaTime;
+        if (Acumelater > TimeToWaitBeforeEndGame)
+        {
+            // end game 
+            PauseMenu.GetInstance().enabled = true; 
+
+            enabled = false;
+            return; 
+        }
+
+
     }
 
     private void CheckIfWinner(Player player)
@@ -73,7 +97,10 @@ public class FinishLine : MonoBehaviour
             index++; 
         }
 
-        if(AudioManager.instance == null)
+
+        GameEnded = true; 
+
+        if (AudioManager.instance == null)
         {
             return; 
         }

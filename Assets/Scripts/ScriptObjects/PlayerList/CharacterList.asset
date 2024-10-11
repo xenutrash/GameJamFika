@@ -28,4 +28,4 @@ MonoBehaviour:
   - CharacterPrefab: {fileID: 3303934124489859916, guid: b886996e9e40e0844a3e6ea6ce3abb53, type: 3}
     NameOfCharacter: Star
     CharacterImage: {fileID: 21300000, guid: 33cf9a6cb73ac8347b220ec711a9f93b, type: 3}
-  defaultCharacter: {fileID: 3303934124489859916, guid: b886996e9e40e0844a3e6ea6ce3abb53, type: 3}
+  defaultCharacter: {fileID: 3303934124489859916, guid: 94c7abd5b8647466daad08d9f5b80a71, type: 3}

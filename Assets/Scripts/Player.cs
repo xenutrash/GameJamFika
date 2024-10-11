@@ -219,7 +219,7 @@ public class Player : MonoBehaviour
         PlayAudioOneShoot(Stats.tauntSound);
         if (animator != null)
         {
-            animator.SetTrigger("boost");
+            animator.SetTrigger("taunt");
         }
 
 
