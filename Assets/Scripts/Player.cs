@@ -24,7 +24,11 @@ public class Player : MonoBehaviour
     public float driftDrag = 2f;
     public float normalDrag = 0.05f;
 
-    public PlayerHUDScript hud; 
+    public PlayerHUDScript hud;
+
+    public SpringArm springArm;
+
+    private int laps = 1;
 
     public string name;
 
@@ -286,6 +290,20 @@ public class Player : MonoBehaviour
             currentSpeed = 0;
         }
 
-    
+    public void IncreaseLaps(int totalLaps)
+    {
+        laps++;
+        hud.SetLapText(laps.ToString() + "/" + totalLaps.ToString());
+    }
+
+    public int GetLaps()
+    {
+        return laps;
+    }
+
+    public void EndGame(string winner)
+    {
+        hud.WinnerPlayer(winner);
+    }
 
 }

@@ -134,6 +134,7 @@ public class SplitScreenManager : MonoBehaviour
         GameObject playerHudObject = Instantiate<GameObject>(PlayerHud);
         PlayerHUDScript playerHud = playerHudObject.GetComponent<PlayerHUDScript>();
 
+        player.springArm = springArm;
         player.hud = playerHud;
         playerHud.SetOwner(camera); 
 

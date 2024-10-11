@@ -50,7 +50,6 @@ public class PowerUp : MonoBehaviour
 
         if (acumulater > respawnTime)
         {
-            Debug.Log("Respawned");
             col.enabled = true;
             acumulater = 0;
             activated = false;
@@ -74,7 +73,6 @@ public class PowerUp : MonoBehaviour
             return; 
         }
 
-        Debug.Log("Trying to apply the speedboost"); 
         activated = true;
         targetPlayer.SetSpeedBoost(speedModifier);
         col.enabled = false;
