@@ -9,12 +9,12 @@ public class Player : MonoBehaviour
     public bool AllowMovement { get; set; } = false;
     private Rigidbody rb;
     public Camera attatchedCamera;
-    Gamepad controller;
+    public Gamepad controller;
 
     public Transform respawnPos = null;
 
     private float speedBoost = 0;
-    private bool isDrifting = false;
+    public bool isDrifting = false;
     private float originalTurnRate;
     public Animator animator;
 
