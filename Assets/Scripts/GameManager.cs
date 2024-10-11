@@ -16,12 +16,20 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     float TimeToWaitBeforeStartOfGame = 3;
 
+
     private SplitScreenManager splitManager {  get;  set; }
 
     private float acumulator = 0; 
     readonly System.Random rand = new System.Random();
-    
 
+    private void Start()
+    {
+        if(AudioManager.instance != null)
+        {
+            AudioManager.instance.Pause(); 
+        }
+    
+    }
 
     // Update is called once per frame
     void Update()

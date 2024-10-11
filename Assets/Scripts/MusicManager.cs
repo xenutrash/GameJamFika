@@ -40,7 +40,15 @@ public class MusicManager : MonoBehaviour
     public void ChangeMusic(AudioClip music)
     {
         musicSource.Stop();
-        music = musicSource.clip;
+        musicSource.clip = music;
         musicSource.Play();
     }
+
+
+    public void PauseMusic()
+    {
+        musicSource.Pause(); 
+    }
+
+
 }

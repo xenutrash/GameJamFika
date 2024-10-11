@@ -37,8 +37,7 @@ public class AudioManager : MonoBehaviour
 
         if (audioSourceCached == null)
         {
-            audioSourceCached = gameObject.GetComponent<AudioSource>();
-            if (audioSourceCached == null)
+            if (!gameObject.TryGetComponent<AudioSource>(out audioSourceCached))
             {
                 audioSourceCached = gameObject.AddComponent<AudioSource>();
             }
@@ -58,11 +57,29 @@ public class AudioManager : MonoBehaviour
 
     public void Pause()
     {
+        if (audioSourceCached == null)
+        {
+            if (!gameObject.TryGetComponent<AudioSource>(out audioSourceCached))
+            {
+                audioSourceCached = gameObject.AddComponent<AudioSource>();
+            }
+        }
+
         audioSourceCached.Pause();
     }
     
     public void Resume()
     {
+        if (audioSourceCached == null)
+        {
+            if (!gameObject.TryGetComponent<AudioSource>(out audioSourceCached))
+            {
+                audioSourceCached = gameObject.AddComponent<AudioSource>();
+            }
+        }
+
+       
+
         audioSourceCached.UnPause();
     }
 
@@ -77,8 +94,7 @@ public class AudioManager : MonoBehaviour
         }
         if(audioSourceCached == null)
         {
-            audioSourceCached = gameObject.GetComponent<AudioSource>();
-            if (audioSourceCached == null)
+            if (!gameObject.TryGetComponent<AudioSource>(out audioSourceCached))
             {
                 audioSourceCached = gameObject.AddComponent<AudioSource>();
             }
@@ -86,4 +102,19 @@ public class AudioManager : MonoBehaviour
        
         audioSourceCached.PlayOneShot(s.clip, s.volume);
     }
+
+    public AudioClip GetMusic()
+    {
+
+        if (audioSourceCached == null)
+        {
+            if (!gameObject.TryGetComponent<AudioSource>(out audioSourceCached))
+            {
+                audioSourceCached = gameObject.AddComponent<AudioSource>();
+            }
+        }
+
+        return audioSourceCached.clip;
+    }
+
 }

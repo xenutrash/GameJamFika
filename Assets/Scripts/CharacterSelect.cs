@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -23,7 +22,7 @@ public class CharacterSelect : MonoBehaviour
     private int PlayerInGame = 0;
 
     float Acumulator = 0;
-    float TimeBeforeActAgain = 0.1f; 
+    float TimeBeforeActAgain = 0.2f; 
 
 
 
@@ -63,10 +62,7 @@ public class CharacterSelect : MonoBehaviour
 
     }
 
-    
-    
-
-
+   
     // Start is called before the first frame update
     void Start()
     {
@@ -74,7 +70,7 @@ public class CharacterSelect : MonoBehaviour
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
         // handle per player selectsion 
         Acumulator += Time.deltaTime;
@@ -96,7 +92,7 @@ public class CharacterSelect : MonoBehaviour
             {
                 SelectedIndex--; 
             }
-            Debug.Log(SelectedIndex);
+           
 
             if (SelectedIndex < 0)
             {
@@ -140,10 +136,7 @@ public class CharacterSelect : MonoBehaviour
 
 
 
-            //if (SelectedIndex == PlayerSelectedIndex[i]) continue;
-            Debug.Log(PlayerImages.Count);
-            Debug.Log(SelectedIndex);
-            
+            //if (SelectedIndex == PlayerSelectedIndex[i]) continue;            
             PlayerSelectedIndex[i] = SelectedIndex;
             PlayerImages[i].sprite = CharacterGUIs[SelectedIndex].CharacterImage.sprite; 
 
@@ -167,7 +160,7 @@ public class CharacterSelect : MonoBehaviour
             {
                 break; 
             }
-            Debug.Log(Added);
+      
             CharacterGUIs[Added].CharacterImage.sprite = character.CharacterImage;
             CharacterGUIs[Added].CharacterText.text = character.NameOfCharacter;
             CharacterGUIs[Added].Character = character;
