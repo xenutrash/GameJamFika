@@ -57,7 +57,7 @@ VisualEffect:
       - m_Value: 3
         m_Name: Brightness
         m_Overridden: 1
-      - m_Value: 3
+      - m_Value: 5
         m_Name: Size
         m_Overridden: 1
     m_Vector2f:
@@ -65,7 +65,10 @@ VisualEffect:
     m_Vector3f:
       m_Array: []
     m_Vector4f:
-      m_Array: []
+      m_Array:
+      - m_Value: {x: 0.7735849, y: 0.7735849, z: 0.7735849, w: 1}
+        m_Name: Base Color
+        m_Overridden: 1
     m_Uint:
       m_Array: []
     m_Int:
@@ -987,6 +990,10 @@ PrefabInstance:
       value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 3487098604929909793, guid: 05ac41738c6244ff78f6b5fe8d830d25, type: 3}
+      propertyPath: isDrifting
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3487098604929909793, guid: 05ac41738c6244ff78f6b5fe8d830d25, type: 3}
       propertyPath: driftFactor
       value: 7
       objectReference: {fileID: 0}
@@ -1062,6 +1069,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6567042490061038672, guid: 05ac41738c6244ff78f6b5fe8d830d25, type: 3}
       insertIndex: -1
       addedObject: {fileID: 8830808833382607653}
+    - targetCorrespondingSourceObject: {fileID: 6567042490061038672, guid: 05ac41738c6244ff78f6b5fe8d830d25, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 435024520050664370}
   m_SourcePrefab: {fileID: 100100000, guid: 05ac41738c6244ff78f6b5fe8d830d25, type: 3}
 --- !u!1 &3303934124489859916 stripped
 GameObject:
@@ -1112,6 +1122,19 @@ MonoBehaviour:
   backOffset: {x: -0.03, y: 1.5, z: -2.16}
   leftOffset: {x: -1.53, y: 1.5, z: 0}
   rightOffset: {x: 2.08, y: 1.5, z: 0}
+--- !u!114 &435024520050664370
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3303934124489859916}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 695339e1c25f13e4ebbcce80635086df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  driftColor: {r: 0.89433956, g: 0.30880022, b: 0.49320382, a: 1}
 --- !u!4 &6870072853617236318 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3002874082281037378, guid: 05ac41738c6244ff78f6b5fe8d830d25, type: 3}
