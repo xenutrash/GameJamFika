@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Awe jr
   m_EditorClassIdentifier: 
   playerName: CupJoe
-  maxSpeed: 24
+  maxSpeed: 26
   driftModifer: 960
   acceleration: 1.8
   turnRaduis: 360

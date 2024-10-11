@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: David Jr
   m_EditorClassIdentifier: 
   playerName: 'david jr '
-  maxSpeed: 27
+  maxSpeed: 26
   driftModifer: 1200
   acceleration: 1.5
   turnRaduis: 360
