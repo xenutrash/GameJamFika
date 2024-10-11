@@ -882,6 +882,7 @@ GameObject:
   - component: {fileID: 146083202076677608}
   - component: {fileID: 7807287178839676406}
   - component: {fileID: 5701456269822051853}
+  - component: {fileID: 5620443336755761183}
   m_Layer: 0
   m_Name: Cup Of Joe
   m_TagString: Player
@@ -923,8 +924,8 @@ MonoBehaviour:
   Stats: {fileID: 11400000, guid: 9eb0561c50d324c72be491bc05d65bcc, type: 2}
   attatchedCamera: {fileID: 0}
   respawnPos: {fileID: 0}
+  isDrifting: 0
   animator: {fileID: 0}
-  driftFactor: 1000
   driftDrag: 3
   normalDrag: 0.05
   hud: {fileID: 0}
@@ -1009,6 +1010,19 @@ MonoBehaviour:
   backOffset: {x: 0, y: 0, z: -2.16}
   leftOffset: {x: -1.45, y: 0, z: 0}
   rightOffset: {x: 1.48, y: 0, z: 0}
+--- !u!114 &5620443336755761183
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1750527005617442404}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 695339e1c25f13e4ebbcce80635086df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  driftColor: {r: 0.73333335, g: 0.33568883, b: 0.1098039, a: 1}
 --- !u!1 &2196259184830217983
 GameObject:
   m_ObjectHideFlags: 0
