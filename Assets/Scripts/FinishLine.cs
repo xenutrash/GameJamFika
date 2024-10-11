@@ -63,7 +63,10 @@ public class FinishLine : MonoBehaviour
     {
         if (player.GetLaps() > totalLaps)
         {
+            if (MadeItPassTheLine.Contains(player)) return; 
+
             MadeItPassTheLine.Add(player);
+            
             if (MadeItPassTheLine.Count <= 1)
             {
                 player.hud.WinnerPlayer("f");

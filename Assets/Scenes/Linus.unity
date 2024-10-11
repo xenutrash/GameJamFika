@@ -7320,6 +7320,10 @@ PrefabInstance:
       value: FinishLine
       objectReference: {fileID: 0}
     - target: {fileID: 5858570733357861237, guid: 5718095528da98047aaa843d56461a78, type: 3}
+      propertyPath: totalLaps
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5858570733357861237, guid: 5718095528da98047aaa843d56461a78, type: 3}
       propertyPath: FinishLineMusic
       value: EndGame_Music
       objectReference: {fileID: 0}
