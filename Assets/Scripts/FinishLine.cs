@@ -59,13 +59,18 @@ public class FinishLine : MonoBehaviour
     {
         if (player.GetLaps() > totalLaps)
         {
-            if(MadeItPassTheLine.Count < 1)
+            MadeItPassTheLine.Add(player);
+            if (MadeItPassTheLine.Count <= 1)
             {
                 player.hud.WinnerPlayer("f");
             }
-            MadeItPassTheLine.Add(player);
-            player.hud.SetFinishedText((MadeItPassTheLine.
-                     Count).ToString());
+            else
+            {
+                player.hud.SetFinishedText((MadeItPassTheLine.
+                    Count).ToString());
+            }
+            
+
 
         }
         
