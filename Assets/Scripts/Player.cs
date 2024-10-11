@@ -9,7 +9,7 @@ public class Player : MonoBehaviour
     public bool AllowMovement { get; set; } = false;
     private Rigidbody rb;
     public Camera attatchedCamera;
-    Gamepad controller;
+    public Gamepad controller;
 
     public Transform respawnPos = null;
 

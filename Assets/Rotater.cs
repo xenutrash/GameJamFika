@@ -17,10 +17,11 @@ public class Rotater : MonoBehaviour
     void Update()
     {
         CurrentRotastion += rotationRate * Time.deltaTime; 
-        if(CurrentRotastion > 360)
+        if(CurrentRotastion >= 1)
         {
             CurrentRotastion = 0;
+
         }
-        transform.Rotate(0,CurrentRotastion, 0);
+        transform.Rotate(0, rotationRate * Time.deltaTime , 0);
     }
 }
