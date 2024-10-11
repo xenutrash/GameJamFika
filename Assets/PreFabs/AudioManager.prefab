@@ -88,6 +88,12 @@ MonoBehaviour:
     pitch: 1
     loop: 0
     source: {fileID: 0}
+  - name: EndGame_Music
+    clip: {fileID: 8300000, guid: 8c43bcf5ca1c441eeb7a9e105ae71fe3, type: 3}
+    volume: 1.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
 --- !u!82 &8063402671804821931
 AudioSource:
   m_ObjectHideFlags: 0
