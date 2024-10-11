@@ -70,7 +70,7 @@ MonoBehaviour:
     pitch: 1
     loop: 1
     source: {fileID: 0}
-  - name: Bark_Small
+  - name: Ouppy_Boost
     clip: {fileID: 8300000, guid: f68b6cbf1764838469859509bf71e82a, type: 3}
     volume: 1.5
     pitch: 1
@@ -126,6 +126,12 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: CupJoe_Taunt
     clip: {fileID: 8300000, guid: f30bc16f3bf6213478b95b079a2d4d2c, type: 3}
+    volume: 1.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Ouppy_Taunt
+    clip: {fileID: 8300000, guid: 5799874643a6d7a488d55ff9cbf740c6, type: 3}
     volume: 1.5
     pitch: 1
     loop: 0
