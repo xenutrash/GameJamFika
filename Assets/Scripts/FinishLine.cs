@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -58,9 +59,16 @@ public class FinishLine : MonoBehaviour
     {
         if (player.GetLaps() > totalLaps)
         {
+            if(MadeItPassTheLine.Count < 1)
+            {
+                player.hud.WinnerPlayer("f");
+            }
             MadeItPassTheLine.Add(player);
-        }
+            player.hud.SetFinishedText((MadeItPassTheLine.
+                     Count -1).ToString());
 
+        }
+        
         if(MadeItPassTheLine.Count >= CrossSceneContainer.PlayersInGame)
         {
             EndRace(MadeItPassTheLine[0]);
@@ -71,19 +79,18 @@ public class FinishLine : MonoBehaviour
     {
         gameIsActive = false;
 
-        GameObject[] objectsWithTag = GameObject.FindGameObjectsWithTag("Player");
-        players.AddRange(objectsWithTag);
+        //GameObject[] objectsWithTag = GameObject.FindGameObjectsWithTag("Player");
+       // players.AddRange(objectsWithTag);
 
         int index = 0; 
         foreach(var play in MadeItPassTheLine)
         {
             if(index == 0)
-            {
-                play.hud.WinnerPlayer("f");
+            {   
                 continue; 
             }
 
-            play.hud.SetPosText(index.ToString());
+            play.hud.SetFinishedText(index.ToString());
 
             //play.EndGame(player.name);
 

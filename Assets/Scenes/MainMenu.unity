@@ -2021,6 +2021,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5959696989539819530, guid: cf56fb9a3e242402882a59f53699f0d4, type: 3}
+      propertyPath: sounds.Array.data[5].loop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5959696989539819530, guid: cf56fb9a3e242402882a59f53699f0d4, type: 3}
+      propertyPath: sounds.Array.data[6].loop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5959696989539819530, guid: cf56fb9a3e242402882a59f53699f0d4, type: 3}
+      propertyPath: sounds.Array.data[7].loop
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6037302013769482478, guid: cf56fb9a3e242402882a59f53699f0d4, type: 3}
       propertyPath: m_Name
       value: AudioManager
