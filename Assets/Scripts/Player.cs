@@ -20,7 +20,6 @@ public class Player : MonoBehaviour
 
     bool Taunting = false;
 
-    public float driftFactor = 0.9f;
     public float driftDrag = 2f;
     public float normalDrag = 0.05f;
 
@@ -59,13 +58,13 @@ public class Player : MonoBehaviour
             ReduceDriftSpeed();
             if (Input.GetKey(KeyCode.D) || controller.leftStick.value.x > 0.1)
             {
-                Vector3 driftForce = -transform.right * rb.velocity.magnitude * driftFactor;
+                Vector3 driftForce = -transform.right * rb.velocity.magnitude * Stats.driftModifer;
                 driftForce.y = 0;
                 rb.AddForce(driftForce * Time.deltaTime, ForceMode.Acceleration);
             }
             else if (Input.GetKey(KeyCode.A) || controller.leftStick.value.x < -0.1)
             {
-                Vector3 driftForce = transform.right * rb.velocity.magnitude * driftFactor;
+                Vector3 driftForce = transform.right * rb.velocity.magnitude * Stats.driftModifer;
                 driftForce.y = 0;
                 rb.AddForce(driftForce *Time.deltaTime, ForceMode.Acceleration);
             }
