@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;  // For scene management or restarting the game
 
@@ -13,6 +15,12 @@ public class FinishLine : MonoBehaviour
     public List<Player> MadeItPassTheLine = new();
 
     public string FinishLineMusic = "EndGame_Music";
+
+    public float TimeToWaitBeforeEndGame = 10;
+
+    bool GameEnded = false;
+
+    float Acumelater = 0;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -30,13 +38,37 @@ public class FinishLine : MonoBehaviour
         }
     }
 
+    void Update()
+    {
+        if (!GameEnded) return;
+
+        Acumelater += Time.deltaTime;
+        if (Acumelater > TimeToWaitBeforeEndGame)
+        {
+            // end game 
+            PauseMenu.GetInstance().enabled = true; 
+
+            enabled = false;
+            return; 
+        }
+
+
+    }
+
     private void CheckIfWinner(Player player)
     {
         if (player.GetLaps() > totalLaps)
         {
+            if(MadeItPassTheLine.Count < 1)
+            {
+                player.hud.WinnerPlayer("f");
+            }
             MadeItPassTheLine.Add(player);
-        }
+            player.hud.SetFinishedText((MadeItPassTheLine.
+                     Count).ToString());
 
+        }
+        
         if(MadeItPassTheLine.Count >= CrossSceneContainer.PlayersInGame)
         {
             EndRace(MadeItPassTheLine[0]);
@@ -47,19 +79,18 @@ public class FinishLine : MonoBehaviour
     {
         gameIsActive = false;
 
-        GameObject[] objectsWithTag = GameObject.FindGameObjectsWithTag("Player");
-        players.AddRange(objectsWithTag);
+        //GameObject[] objectsWithTag = GameObject.FindGameObjectsWithTag("Player");
+       // players.AddRange(objectsWithTag);
 
         int index = 0; 
         foreach(var play in MadeItPassTheLine)
         {
             if(index == 0)
-            {
-                play.hud.WinnerPlayer("f");
+            {   
                 continue; 
             }
 
-            play.hud.SetPosText(index.ToString());
+            play.hud.SetFinishedText(index.ToString());
 
             //play.EndGame(player.name);
 
@@ -73,7 +104,10 @@ public class FinishLine : MonoBehaviour
             index++; 
         }
 
-        if(AudioManager.instance == null)
+
+        GameEnded = true; 
+
+        if (AudioManager.instance == null)
         {
             return; 
         }

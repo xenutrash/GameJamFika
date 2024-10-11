@@ -16,12 +16,6 @@ public class Rotater : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        CurrentRotastion += rotationRate * Time.deltaTime; 
-        if(CurrentRotastion >= 1)
-        {
-            CurrentRotastion = 0;
-
-        }
         transform.Rotate(0, rotationRate * Time.deltaTime , 0);
     }
 }
