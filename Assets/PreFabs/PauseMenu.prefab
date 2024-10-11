@@ -286,7 +286,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: fika break
+  m_Text: fika paus
 --- !u!1 &4217377648273922473
 GameObject:
   m_ObjectHideFlags: 0
