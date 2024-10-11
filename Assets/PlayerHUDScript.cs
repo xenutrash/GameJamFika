@@ -24,7 +24,17 @@ public class PlayerHUDScript : MonoBehaviour
 
 
     [SerializeField]
-    Canvas canvas; 
+    Canvas canvas;
+
+    [SerializeField]
+    GameObject PosObject;
+
+
+    [SerializeField]
+    GameObject SpeedObject;
+
+    [SerializeField]
+    GameObject LapObject;
 
     public void SetLapText(string TextToSet)
     {
@@ -88,9 +98,9 @@ public class PlayerHUDScript : MonoBehaviour
         WinnerText.gameObject.SetActive(true);
         WinnerText.text = "Finished at pos: 1";
 
-        LapText.gameObject.SetActive(false);
-        SpeedText.gameObject.SetActive(false);
-        PosText.gameObject.SetActive(false);
+        LapObject.SetActive(false);
+        SpeedObject.SetActive(false);
+        PosObject.SetActive(false);
     }
 
 
@@ -98,6 +108,11 @@ public class PlayerHUDScript : MonoBehaviour
     {
         WinnerText.gameObject.SetActive(true);
         WinnerText.text = "Finished at pos: " + pos;
+
+        LapObject.SetActive(false);
+        SpeedObject.SetActive(false);
+        PosObject.SetActive(false);
+
 
     }
 

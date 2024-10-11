@@ -168,7 +168,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.5835266, y: -54}
+  m_AnchoredPosition: {x: -0.5835266, y: -17}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8786447626004412136
@@ -679,6 +679,9 @@ MonoBehaviour:
   WinnerPlayerText: {fileID: 0}
   WinnerImage: {fileID: 908301464412292007}
   canvas: {fileID: 464695668234300809}
+  PosObject: {fileID: 5605192651037981530}
+  SpeedObject: {fileID: 3319154856104123728}
+  LapObject: {fileID: 8731146058062526666}
 --- !u!1 &5605192651037981530
 GameObject:
   m_ObjectHideFlags: 0
@@ -923,7 +926,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 16, y: 181}
+  m_AnchoredPosition: {x: 16, y: 261}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &713747861830630892
