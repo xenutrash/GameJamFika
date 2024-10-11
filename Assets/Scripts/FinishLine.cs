@@ -8,6 +8,8 @@ public class FinishLine : MonoBehaviour
 {
     [SerializeField] int totalLaps = 3;
 
+    public Transform newRespawn;
+
     private bool gameIsActive = true;
 
     public List<GameObject> players;
@@ -30,6 +32,8 @@ public class FinishLine : MonoBehaviour
             if (other.CompareTag("Player"))
             {
                 Player playerScript = other.GetComponent<Player>();
+
+                playerScript.respawnPos = newRespawn;
 
                 playerScript.IncreaseLaps(totalLaps);
 
@@ -151,7 +155,12 @@ public class FinishLine : MonoBehaviour
            
         }
         */
+    }
 
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.green;
+        Gizmos.DrawSphere(newRespawn.position, 1);
     }
 }
 
