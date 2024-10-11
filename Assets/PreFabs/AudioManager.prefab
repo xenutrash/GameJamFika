@@ -106,6 +106,18 @@ MonoBehaviour:
     pitch: 1
     loop: 0
     source: {fileID: 0}
+  - name: Star_Boost
+    clip: {fileID: 8300000, guid: 8fcb47bfa6d22fa4ab430f22ad846397, type: 3}
+    volume: 1.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Star_Taunt
+    clip: {fileID: 8300000, guid: 7c35a182eeb13a34a8557eaef857ef88, type: 3}
+    volume: 1.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
 --- !u!82 &8063402671804821931
 AudioSource:
   m_ObjectHideFlags: 0
