@@ -148,6 +148,18 @@ MonoBehaviour:
     pitch: 1
     loop: 0
     source: {fileID: 0}
+  - name: AweJr_Boost
+    clip: {fileID: 8300000, guid: c8513e3ac092f1d419ee4ad7dee9b84a, type: 3}
+    volume: 1.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: AweJr_Taunt
+    clip: {fileID: 8300000, guid: dbacf4c78767f3f40b57c25c19c91565, type: 3}
+    volume: 1.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
 --- !u!82 &8063402671804821931
 AudioSource:
   m_ObjectHideFlags: 0
