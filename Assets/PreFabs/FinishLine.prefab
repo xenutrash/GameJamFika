@@ -69,9 +69,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2fa60ce1ce62f4142976ef3814d42ee0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  totalLaps: 3
+  totalLaps: 1
   players: []
   MadeItPassTheLine: []
+  FinishLineMusic: EndGame_Music
+  TimeToWaitBeforeEndGame: 10
 --- !u!114 &3758043480746938794
 MonoBehaviour:
   m_ObjectHideFlags: 0
