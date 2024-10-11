@@ -1,4 +1,5 @@
 
+using System;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -11,7 +12,7 @@ public class SplitScreenManager : MonoBehaviour
 
     readonly List<Camera> cameras = new();
     public List<Player> players = new();
-    public GameObject playerToSpawn;
+    public GameObject playerToSpawn; 
     public GameObject playerCameraRig;
     [SerializeField]
     GameObject[] spawnPoints;
@@ -21,10 +22,17 @@ public class SplitScreenManager : MonoBehaviour
     Characters characters;
 
     [SerializeField]
-    GameObject PlayerHud; 
+    GameObject PlayerHud;
+
+    public static Func<SplitScreenManager> GetInstance = () => null; 
 
 
-    int index = 0; 
+    int index = 0;
+
+    private void Awake()
+    {
+        GetInstance = () => this; 
+    }
 
     private void Start()
     {

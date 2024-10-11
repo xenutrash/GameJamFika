@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerHUDScript : MonoBehaviour
 {
@@ -17,6 +18,10 @@ public class PlayerHUDScript : MonoBehaviour
 
     [SerializeField]
     TextMeshProUGUI WinnerPlayerText;
+
+    [SerializeField]
+    Image WinnerImage; 
+
 
     [SerializeField]
     Canvas canvas; 
@@ -73,12 +78,29 @@ public class PlayerHUDScript : MonoBehaviour
 
     public void WinnerPlayer(string TextToSet)
     {
+        /*
         WinnerPlayerText.gameObject.SetActive(true);
         WinnerPlayerText.text = TextToSet;
+        */
+
+        WinnerImage.gameObject.SetActive(true);
+        
         WinnerText.gameObject.SetActive(true);
+        WinnerText.text = "Finished at pos: 1";
+
         LapText.gameObject.SetActive(false);
         SpeedText.gameObject.SetActive(false);
         PosText.gameObject.SetActive(false);
     }
+
+
+    public void SetFinishedText(string pos)
+    {
+        WinnerText.gameObject.SetActive(true);
+        WinnerText.text = "Finished at pos: " + pos;
+
+    }
+
+
 
 }

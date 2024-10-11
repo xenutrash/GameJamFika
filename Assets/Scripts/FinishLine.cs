@@ -10,6 +10,8 @@ public class FinishLine : MonoBehaviour
 
     public List<GameObject> players;
 
+    public List<Player> MadeItPassTheLine = new(); 
+
     private void OnTriggerEnter(Collider other)
     {
         if (gameIsActive)
@@ -30,7 +32,12 @@ public class FinishLine : MonoBehaviour
     {
         if (player.GetLaps() > totalLaps)
         {
-            EndRace(player);
+            MadeItPassTheLine.Add(player);
+        }
+
+        if(MadeItPassTheLine.Count >= CrossSceneContainer.PlayersInGame)
+        {
+            EndRace(MadeItPassTheLine[0]);
         }
     }
 
