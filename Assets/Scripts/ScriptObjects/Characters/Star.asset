@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerName: Default
   maxSpeed: 23
-  driftModifer: 4
+  driftModifer: 2000
   acceleration: 100
   turnRaduis: 360
   turnRate: 100
