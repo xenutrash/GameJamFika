@@ -70,7 +70,7 @@ MonoBehaviour:
     pitch: 1
     loop: 1
     source: {fileID: 0}
-  - name: Bark_Small
+  - name: Ouppy_Boost
     clip: {fileID: 8300000, guid: f68b6cbf1764838469859509bf71e82a, type: 3}
     volume: 1.5
     pitch: 1
@@ -94,14 +94,14 @@ MonoBehaviour:
     pitch: 1
     loop: 0
     source: {fileID: 0}
-  - name: Man_Yeah
-    clip: {fileID: 8300000, guid: b1076adebd1c80043a2e0bdb00087a58, type: 3}
+  - name: BuffJr_Boost
+    clip: {fileID: 8300000, guid: 5c1b6b9b8591d96439b819002a553607, type: 3}
     volume: 1.5
     pitch: 1
     loop: 0
     source: {fileID: 0}
-  - name: Man_Wow
-    clip: {fileID: 8300000, guid: 5c1b6b9b8591d96439b819002a553607, type: 3}
+  - name: BuffJr_Taunt
+    clip: {fileID: 8300000, guid: b1076adebd1c80043a2e0bdb00087a58, type: 3}
     volume: 1.5
     pitch: 1
     loop: 0
@@ -126,6 +126,48 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: CupJoe_Taunt
     clip: {fileID: 8300000, guid: f30bc16f3bf6213478b95b079a2d4d2c, type: 3}
+    volume: 1.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Ouppy_Taunt
+    clip: {fileID: 8300000, guid: 5799874643a6d7a488d55ff9cbf740c6, type: 3}
+    volume: 1.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: EmmaJr_Boost
+    clip: {fileID: 8300000, guid: 24e71538ed0bb814e98fd4550ba7a250, type: 3}
+    volume: 1.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: EmmaJr_Taunt
+    clip: {fileID: 8300000, guid: e3f5b88e72da28542ab2d9dfed9a4b87, type: 3}
+    volume: 1.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: AweJr_Boost
+    clip: {fileID: 8300000, guid: c8513e3ac092f1d419ee4ad7dee9b84a, type: 3}
+    volume: 1.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: AweJr_Taunt
+    clip: {fileID: 8300000, guid: dbacf4c78767f3f40b57c25c19c91565, type: 3}
+    volume: 1.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: DavidJr_Boost
+    clip: {fileID: 8300000, guid: c3e3a02800864ff4bbbf6bb5a89c267c, type: 3}
+    volume: 1.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: DavidJr_Taunt
+    clip: {fileID: 8300000, guid: ca81b31afb6bfcd4893cb5f76984eb8c, type: 3}
     volume: 1.5
     pitch: 1
     loop: 0
