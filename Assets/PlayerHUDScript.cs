@@ -106,7 +106,8 @@ public class PlayerHUDScript : MonoBehaviour
 
     public void SetFinishedText(string pos)
     {
-        //WinnerText.gameObject.SetActive(true);
+       
+        WinnerText.gameObject.SetActive(true);
         WinnerText.text = "Finished at pos: " + pos;
 
         LapObject.SetActive(false);
