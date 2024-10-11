@@ -65,7 +65,7 @@ public class FinishLine : MonoBehaviour
             }
             MadeItPassTheLine.Add(player);
             player.hud.SetFinishedText((MadeItPassTheLine.
-                     Count -1).ToString());
+                     Count).ToString());
 
         }
         
