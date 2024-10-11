@@ -924,10 +924,11 @@ MonoBehaviour:
   attatchedCamera: {fileID: 0}
   respawnPos: {fileID: 0}
   animator: {fileID: 0}
-  driftFactor: 2.5
+  driftFactor: 1000
   driftDrag: 3
   normalDrag: 0.05
   hud: {fileID: 0}
+  springArm: {fileID: 0}
   name: 
 --- !u!33 &4428667583059613823
 MeshFilter:

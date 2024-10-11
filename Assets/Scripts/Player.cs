@@ -61,13 +61,13 @@ public class Player : MonoBehaviour
             {
                 Vector3 driftForce = -transform.right * rb.velocity.magnitude * driftFactor;
                 driftForce.y = 0;
-                rb.AddForce(driftForce, ForceMode.Acceleration);
+                rb.AddForce(driftForce * Time.deltaTime, ForceMode.Acceleration);
             }
             else if (Input.GetKey(KeyCode.A) || controller.leftStick.value.x < -0.1)
             {
                 Vector3 driftForce = transform.right * rb.velocity.magnitude * driftFactor;
                 driftForce.y = 0;
-                rb.AddForce(driftForce, ForceMode.Acceleration);
+                rb.AddForce(driftForce *Time.deltaTime, ForceMode.Acceleration);
             }
         }
         else
