@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: df22689c85e7545f49ed13ef75bd524e, type: 3}
-  m_Name: CupJoe
+  m_Name: Star
   m_EditorClassIdentifier: 
-  playerName: CupJoe
-  maxSpeed: 26
-  driftModifer: 1000
-  acceleration: 1.7
+  playerName: Default
+  maxSpeed: 23
+  driftModifer: 2000
+  acceleration: 100
   turnRaduis: 360
-  turnRate: 60
-  boostMultiplier: 1.2
+  turnRate: 100
+  boostMultiplier: 2
   Object: {fileID: 0}
   rotastionOFObject: {x: 0, y: 0, z: 0, w: 0}
   posistionOfObject: {x: 0, y: 0, z: 0}
