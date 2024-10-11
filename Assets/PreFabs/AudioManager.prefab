@@ -94,6 +94,18 @@ MonoBehaviour:
     pitch: 1
     loop: 0
     source: {fileID: 0}
+  - name: Man_Yeah
+    clip: {fileID: 8300000, guid: b1076adebd1c80043a2e0bdb00087a58, type: 3}
+    volume: 1.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Man_Wow
+    clip: {fileID: 8300000, guid: 5c1b6b9b8591d96439b819002a553607, type: 3}
+    volume: 1.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
 --- !u!82 &8063402671804821931
 AudioSource:
   m_ObjectHideFlags: 0
