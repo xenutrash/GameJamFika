@@ -80,13 +80,13 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 9006cf75461601e44ba03cef69cd7a00, type: 3}
     volume: 1.5
     pitch: 1
-    loop: 0
+    loop: 1
     source: {fileID: 0}
   - name: Menu_Music
     clip: {fileID: 8300000, guid: 802d489dbe3477a46962f8c558adaf83, type: 3}
     volume: 1.5
     pitch: 1
-    loop: 0
+    loop: 1
     source: {fileID: 0}
   - name: EndGame_Music
     clip: {fileID: 8300000, guid: 8c43bcf5ca1c441eeb7a9e105ae71fe3, type: 3}
