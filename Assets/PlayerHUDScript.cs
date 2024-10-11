@@ -11,7 +11,12 @@ public class PlayerHUDScript : MonoBehaviour
 
     [SerializeField]
     TextMeshProUGUI LapText;
-    
+
+    [SerializeField]
+    TextMeshProUGUI WinnerText;
+
+    [SerializeField]
+    TextMeshProUGUI WinnerPlayerText;
 
     [SerializeField]
     Canvas canvas; 
@@ -64,7 +69,16 @@ public class PlayerHUDScript : MonoBehaviour
         canvas.renderMode = RenderMode.ScreenSpaceCamera;
         canvas.worldCamera = camera;
         canvas.planeDistance = 1; 
+    }
 
+    public void WinnerPlayer(string TextToSet)
+    {
+        WinnerPlayerText.gameObject.SetActive(true);
+        WinnerPlayerText.text = TextToSet;
+        WinnerText.gameObject.SetActive(true);
+        LapText.gameObject.SetActive(false);
+        SpeedText.gameObject.SetActive(false);
+        PosText.gameObject.SetActive(false);
     }
 
 }

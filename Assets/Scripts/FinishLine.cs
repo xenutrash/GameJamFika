@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;  // For scene management or restarting the game
 
@@ -5,11 +6,9 @@ public class FinishLine : MonoBehaviour
 {
     [SerializeField] int totalLaps = 3;
 
-    private int player1Lap = 0;
-    private int player2Lap = 0;
-    private int player3Lap = 0;
-    private int player4Lap = 0;
     private bool gameIsActive = true;
+
+    public List<GameObject> players;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -20,35 +19,16 @@ public class FinishLine : MonoBehaviour
             {
                 Player playerScript = other.GetComponent<Player>();
 
-                switch (playerScript.name)
-                {
-                    case "Player1":
-                        player1Lap += 1;
-                        CheckIfWinner(playerScript, player1Lap);
-                        break;
+                playerScript.IncreaseLaps(totalLaps);
 
-                    case "Player2":
-                        player2Lap += 1;
-                        CheckIfWinner(playerScript, player2Lap);
-                        break;
-
-                    case "Player3":
-                        player3Lap += 1;
-                        CheckIfWinner(playerScript, player3Lap);
-                        break;
-
-                    case "Player4":
-                        player4Lap += 1;
-                        CheckIfWinner(playerScript, player4Lap);
-                        break;
-                }
+                CheckIfWinner(playerScript);
             }
         }
     }
 
-    private void CheckIfWinner(Player player, int lap)
+    private void CheckIfWinner(Player player)
     {
-        if (lap >= totalLaps)
+        if (player.GetLaps() > totalLaps)
         {
             EndRace(player);
         }
@@ -57,16 +37,29 @@ public class FinishLine : MonoBehaviour
     void EndRace(Player player)
     {
         gameIsActive = false;
-        if (PauseMenu.GetInstance() != null)
-        {
-            PauseMenu.GetInstance().SetVisabability(true);
-            Time.timeScale = 0;
 
-            if (AudioManager.instance != null)
+        GameObject[] objectsWithTag = GameObject.FindGameObjectsWithTag("Player");
+        players.AddRange(objectsWithTag);
+
+        for (int i = 0; i < players.Count; i++)
+        {
+
+            Player playerCompare = players[i].GetComponent<Player>();
+
+            if (playerCompare != player)
             {
-                AudioManager.instance.Pause();
+                playerCompare.EndGame(player.name);
+
+                SpringArm arm = playerCompare.springArm;
+                arm.target = player.transform;
+                arm.useControlRotation = false;
+
+                arm.socketOffset = new Vector3(0, 1, -4);
+                arm.transform.rotation = Quaternion.Euler(12, 4, 0);
             }
+           
         }
+
     }
 }
 
