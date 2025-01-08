@@ -1,3 +1,5 @@
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -15,8 +17,10 @@ public class CharacterSelect : MonoBehaviour
 
 
     public List<int> PlayerSelectedIndex = new();
+    private List<bool> _CanMoveController = new( new bool[10]);
 
     private List<CharacterGUI> SelectedCharacter = new(); 
+
 
 
     private int PlayerInGame = 0;
@@ -31,33 +35,16 @@ public class CharacterSelect : MonoBehaviour
         // Do things 
         PlayerInGame = PlayerToStartWith;
         GenerateGUI();
-        
        
-        for(int i = 0; i < PlayerInGame; i++)
+
+
+        for (int i = 0; i < PlayerInGame; i++)
         {
-            PlayerSelectedIndex.Add(0);
+            PlayerSelectedIndex.Add(i);
+            _CanMoveController[i] = true;
+            StartCoroutine(WaitForInputForController(i, 0.3f));
             SelectedCharacter.Add(null);
-            switch (i)
-            {
-                case 0:
-                    PlayerSelectedIndex[0] = 0;
-                    PlayerImages[PlayerSelectedIndex[i]].sprite = CharacterGUIs[PlayerSelectedIndex[i]].CharacterImage.sprite;
-                    break;
-                case 1:
-                    PlayerSelectedIndex[1] = 1;
-                    PlayerImages[PlayerSelectedIndex[i]].sprite = CharacterGUIs[PlayerSelectedIndex[i]].CharacterImage.sprite;
-                    break;
-                case 2:
-                    PlayerSelectedIndex[2] = 2;
-                    PlayerImages[PlayerSelectedIndex[i]].sprite = CharacterGUIs[PlayerSelectedIndex[i]].CharacterImage.sprite;
-                    break;
-                case 3:
-                    PlayerSelectedIndex[3] = 3;
-                    PlayerImages[PlayerSelectedIndex[i]].sprite = CharacterGUIs[PlayerSelectedIndex[i]].CharacterImage.sprite;
-                    break; 
-            }
-
-
+            PlayerImages[PlayerSelectedIndex[i]].sprite = CharacterGUIs[PlayerSelectedIndex[i]].CharacterImage.sprite;
         }
 
     }
@@ -78,19 +65,35 @@ public class CharacterSelect : MonoBehaviour
         {
             if (Gamepad.all.Count <= i) break; 
             Gamepad gamepad = Gamepad.all[i];
+ 
             int SelectedIndex = PlayerSelectedIndex[i];
-            
+          
+            if(_CanMoveController.Count < i)
+            {
+                Debug.Log("something is cringe"); 
+                continue; 
+            }
+
+            if (!_CanMoveController[i])
+            {
+                Debug.Log("The controller is not allowed to move "); 
+                continue; 
+            }
+           
+            bool hasMoved = false;
 
             //Moving left
-            if(gamepad.leftStick.value.x >= 0.87 &&  Acumulator >= TimeBeforeActAgain)
+            if(gamepad.leftStick.value.x >= 0.87 )
             {
               SelectedIndex++; 
+                hasMoved = true;
             }
 
             // moving right
-            if (gamepad.leftStick.value.x <= -0.87 && Acumulator >= TimeBeforeActAgain)
+            if (gamepad.leftStick.value.x <= -0.87 )
             {
                 SelectedIndex--; 
+                hasMoved = true;
             }
            
 
@@ -102,9 +105,11 @@ public class CharacterSelect : MonoBehaviour
             {
                 SelectedIndex = 0;
             }
+            
 
             if (gamepad.aButton.isPressed)
             {
+                hasMoved = true;
                 SelectedCharacter[i] = CharacterGUIs[SelectedIndex];
                 PlayerImages[i].color = Color.green;
                 switch (i)
@@ -123,7 +128,7 @@ public class CharacterSelect : MonoBehaviour
                         break;
                 }
 
-
+     
 
                 if (CheckStartCondistion())
                 {
@@ -132,6 +137,11 @@ public class CharacterSelect : MonoBehaviour
                     break;
                 }
                
+            }
+
+            if (hasMoved)
+            {
+                StartCoroutine(WaitForInputForController(i));
             }
 
 
@@ -185,4 +195,24 @@ public class CharacterSelect : MonoBehaviour
     {
         SceneManager.LoadScene(1);
     }
+
+    IEnumerator WaitForInputForController(int index, float TimeToWait = 0.4f)
+    {
+        if( _CanMoveController.Count < index)
+        {
+            Debug.Log("No player with that index"); 
+            yield break;  
+        }
+        if (_CanMoveController[index] == false)
+        {
+            yield break; 
+        }
+  
+        _CanMoveController[index] = false;
+        yield return new WaitForSeconds(TimeToWait);
+
+        _CanMoveController[index] = true;
+
+    }
+
 }
